@@ -58,7 +58,7 @@ export async function getNewTasks(): Promise<Task[]> {
       owner: issue.repository?.owner.login ?? TAURI_ORG_NAME,
       repo: issue.repository?.name ?? TAURI_REPO_NAME,
     })
-    if (!user || (await isTauriOrgMember(user.login))) continue
+    if (!user || !(await isTauriOrgMember(user.login))) continue
 
     logger.info(
       `comment received on ${chalk.green(
