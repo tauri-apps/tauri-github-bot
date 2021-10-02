@@ -4,12 +4,21 @@ import {
   TAURI_ORG_NAME,
   TAURI_REPO_NAME,
 } from './constants'
-import { upstreamIssueResolved } from './templates'
+import { upstreamIssueBodyPredicate, upstreamIssueResolved } from './templates'
 import { getIssueFromUrl, logger } from './utils'
 
-export async function notify(url: string): Promise<void> {
-  const issue = await getIssueFromUrl(url)
-  if (!issue || issue.user?.login !== TAURI_BOT_NAME) return
+export async function notify(upstreamurl: string): Promise<void> {
+  const upstreamIssue = await getIssueFromUrl(upstreamurl)
+  if (!upstreamIssue || upstreamIssue.user?.login !== TAURI_BOT_NAME) return
+
+  const ogIssueUrl = upstreamIssue.body
+    ?.replace(upstreamIssueBodyPredicate, '')
+    .split('\n\n')[0]
+    .trim()
+  if (!ogIssueUrl) return
+
+  const issue = await getIssueFromUrl(ogIssueUrl)
+  if (!issue) return
 
   logger.info(
     `Notifying issue (${TAURI_ORG_NAME}/${
