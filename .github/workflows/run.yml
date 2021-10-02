@@ -1,20 +1,18 @@
 name: Run
 
-inputs:
-  command:
-    description: 'Tauri bot command'
-    required: false
-    default: 'inbox' # possible values are 'inbox' 'notify'
-
-  url:
-    description: 'url of closed issue for notify command'
-    required: false
-
 on:
   schedule:
     # every 15 mins
     - cron: 0/15 * * * *
   workflow_dispatch:
+    inputs:
+      command:
+        description: 'Tauri bot command'
+        required: false
+        default: 'inbox' # possible values are 'inbox' 'notify'
+      url:
+        description: 'url of closed issue for notify command'
+        required: false
 
 jobs:
   run:
