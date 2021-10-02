@@ -1,5 +1,15 @@
 name: Run
 
+inputs:
+  command:
+    description: 'Tauri bot command'
+    required: false
+    default: 'inbox' # possible values are 'inbox' 'notify'
+
+  url:
+    description: 'url of closed issue for notify command'
+    required: false
+
 on:
   schedule:
     # every 15 mins
@@ -17,6 +27,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm i -g pnpm
       - run: pnpm i --prod
-      - run: pnpm start inbox
+      - run: pnpm start ${{ inputs.command }} ${{ inputs.url }}
         env:
           TAURI_BOT_TOKEN: ${{ secrets.TAURI_BOT_TOKEN }}
