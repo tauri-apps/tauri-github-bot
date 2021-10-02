@@ -25,6 +25,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm i -g pnpm
       - run: pnpm i --prod
-      - run: pnpm start ${{ inputs.command }} ${{ inputs.url }}
+      - run: pnpm start ${{ inputs.command || 'inbox' }} ${{ inputs.url }}
         env:
           TAURI_BOT_TOKEN: ${{ secrets.TAURI_BOT_TOKEN }}
