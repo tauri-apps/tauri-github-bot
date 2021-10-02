@@ -56,6 +56,5 @@ export async function isTauriOrgMember(user: string): Promise<boolean> {
   const members = (
     await octokit.orgs.listMembers({ org: TAURI_ORG_NAME })
   ).data.map((i) => i.login)
-  console.log(members)
   return members.includes(user)
 }
