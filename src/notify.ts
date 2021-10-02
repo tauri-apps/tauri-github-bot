@@ -1,10 +1,15 @@
-import { octokit, TAURI_ORG_NAME, TAURI_REPO_NAME } from './constants'
+import {
+  octokit,
+  TAURI_BOT_NAME,
+  TAURI_ORG_NAME,
+  TAURI_REPO_NAME,
+} from './constants'
 import { upstreamIssueResolved } from './templates'
 import { getIssueFromUrl, logger } from './utils'
 
 export async function notify(url: string): Promise<void> {
   const issue = await getIssueFromUrl(url)
-  if (!issue) return
+  if (!issue || issue.user?.login !== TAURI_BOT_NAME) return
 
   logger.info(
     `Notifying issue (${TAURI_ORG_NAME}/${
