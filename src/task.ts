@@ -1,4 +1,9 @@
-import { BOT_NAME, octokit, ORG_NAME } from './constants'
+import {
+  TAURI_BOT_NAME,
+  octokit,
+  TAURI_ORG_NAME,
+  TAURI_REPO_NAME,
+} from './constants'
 import {
   getCommentIdFromUrl,
   getIssueFromUrl,
@@ -21,7 +26,7 @@ interface Task {
   originalRepo: string
 }
 
-const REGEX_UPSTREAM = new RegExp(`@${BOT_NAME} upstream (tao|wry)`, 'i')
+const REGEX_UPSTREAM = new RegExp(`@${TAURI_BOT_NAME} upstream (tao|wry)`, 'i')
 
 export async function getNewTasks(): Promise<Task[]> {
   logger.info('checking notifications...')
@@ -34,7 +39,7 @@ export async function getNewTasks(): Promise<Task[]> {
     async (e) =>
       e.reason === 'mention' &&
       e.subject.type === 'Issue' &&
-      e.repository.owner.login === ORG_NAME &&
+      e.repository.owner.login === TAURI_ORG_NAME &&
       (await isIssueOpen(e.subject.url))
   )
   logger.info(`found ${chalk.blue(notifications.length)} valid notifications.`)
@@ -50,8 +55,8 @@ export async function getNewTasks(): Promise<Task[]> {
       data: { body = '', user },
     } = await octokit.issues.getComment({
       comment_id,
-      owner: issue.repository?.owner.login ?? ORG_NAME,
-      repo: issue.repository?.name ?? 'tauri',
+      owner: issue.repository?.owner.login ?? TAURI_ORG_NAME,
+      repo: issue.repository?.name ?? TAURI_REPO_NAME,
     })
     if (!user || (await isTauriOrgMember(user.login))) continue
 
@@ -81,29 +86,38 @@ export async function getNewTasks(): Promise<Task[]> {
 
 export async function runUpstreamTasks(tasks: Task[]): Promise<void> {
   if (tasks.length === 0) return
+  logger.info('running upstream tasks...')
 
   for (const t of tasks) {
+    logger.info(`creating an issue at ${TAURI_ORG_NAME}/${t.upstreamRepo}...`)
     const newIssue = (
       await octokit.issues.create({
-        owner: ORG_NAME,
+        owner: TAURI_ORG_NAME,
         repo: t.upstreamRepo,
         title: t.issue.title,
         body: upstreamIssueBody(t.issue.url, t.issue.body),
       })
     ).data
 
+    logger.info(
+      `Commenting on original issue (${TAURI_ORG_NAME}/${t.originalRepo}#${t.issue.number})...`
+    )
     await octokit.issues.createComment({
-      owner: ORG_NAME,
+      owner: TAURI_ORG_NAME,
       repo: t.originalRepo,
       body: issueUpstreamedComment(newIssue.html_url),
       issue_number: t.issue.number,
     })
 
+    logger.info(
+      `Adding upstream label to origianl issue (${TAURI_ORG_NAME}/${t.originalRepo}#${t.issue.number}).`
+    )
     await octokit.issues.addLabels({
-      owner: ORG_NAME,
+      owner: TAURI_ORG_NAME,
       repo: t.originalRepo,
       issue_number: t.issue.number,
       labels: ['status: upstream'],
     })
   }
+  logger.info('Finished upstream tasks.')
 }

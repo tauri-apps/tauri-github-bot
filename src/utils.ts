@@ -1,6 +1,6 @@
 import { RestEndpointMethodTypes } from '@octokit/rest'
 import { createLogger, transports, format } from 'winston'
-import { octokit, ORG_NAME } from './constants'
+import { octokit, TAURI_ORG_NAME } from './constants'
 
 export const logger = createLogger({
   level: 'info',
@@ -36,7 +36,7 @@ export async function getIssueFromUrl(
   RestEndpointMethodTypes['issues']['get']['response']['data'] | undefined
 > {
   const matches =
-    /api\.github\.com\/repos\/(.+?)\/(.+?)\/pulls\/([0-9]+)$/.exec(url)
+    /api\.github\.com\/repos\/(.+?)\/(.+?)\/issues\/([0-9]+)$/.exec(url)
   if (!matches) return
 
   const [, owner, repo, issue_number] = matches
@@ -53,9 +53,9 @@ export function getCommentIdFromUrl(url: string): number {
 }
 
 export async function isTauriOrgMember(user: string): Promise<boolean> {
-  const members = (await octokit.orgs.listMembers({ org: ORG_NAME })).data.map(
-    (i) => i.login
-  )
+  const members = (
+    await octokit.orgs.listMembers({ org: TAURI_ORG_NAME })
+  ).data.map((i) => i.login)
   console.log(members)
   return members.includes(user)
 }

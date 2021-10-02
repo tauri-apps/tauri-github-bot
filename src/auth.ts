@@ -1,10 +1,10 @@
-import { BOT_NAME, octokit } from './constants'
+import { TAURI_BOT_NAME, octokit } from './constants'
 
 export async function checkBot(): Promise<void> {
   try {
     const { data: user } = await octokit.users.getAuthenticated()
 
-    if (!user || user.login !== BOT_NAME) {
+    if (!user || user.login !== TAURI_BOT_NAME) {
       console.error('Invalid GITHUB_TOKEN provided.')
       process.exit(1)
     }
