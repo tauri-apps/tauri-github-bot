@@ -1,10 +1,12 @@
 import { checkBot } from './auth'
-import { getNewTasks, runUpstreamTasks } from './task'
+import { inbox } from './inbox'
+import { notify } from './notify'
 
 async function run() {
   await checkBot()
-  const tasks = await getNewTasks()
-  await runUpstreamTasks(tasks)
+  const cmd = process.argv[2]
+  if (cmd === 'inbox') await inbox()
+  if (cmd === 'notify') await notify(process.argv[3])
 }
 
 run().catch((e) => {
