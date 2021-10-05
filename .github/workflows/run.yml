@@ -2,8 +2,8 @@ name: Run
 
 on:
   schedule:
-    # every 15 mins
-    - cron: 0/15 * * * *
+    # every 1 hour
+    - cron: 0/59 * * * *
   workflow_dispatch:
     inputs:
       command:
