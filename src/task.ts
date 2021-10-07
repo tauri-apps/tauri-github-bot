@@ -69,9 +69,12 @@ export async function getNewTasks(): Promise<Task[]> {
     const matches = body.match(REGEX_UPSTREAM)
     if (!matches) continue
 
+    const upstreamRepo: string = matches[0].split(' ')[2]
+    if (!upstreamRepo || upstreamRepo == issue.repository?.name) continue
+
     tasks.push({
       originalRepo: issue.repository?.name ?? 'tauri',
-      upstreamRepo: matches[0].split(' ')[2],
+      upstreamRepo,
       issue: {
         number: issue.number,
         title: issue.title,
