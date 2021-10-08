@@ -47,7 +47,7 @@ export = (app: Probot): void => {
           await context.octokit.issues.create(
             context.issue({
               title,
-              body: upstreamIssueBody(html_url, body),
+              body: upstreamIssueBody(html_url, body ?? ''),
               repo: cRepo,
               owner: cOwner,
             })
@@ -83,7 +83,7 @@ export = (app: Probot): void => {
         // and created by our bot
         issue.user.login === TAURI_BOT_NAME &&
         // and it was from an upstream command
-        issue.body.startsWith(upstreamIssueBodyPredicate)
+        issue.body?.startsWith(upstreamIssueBodyPredicate)
       ) {
         const originalIssueUrl = issue.body
           .replace(upstreamIssueBodyPredicate, '')
@@ -93,7 +93,7 @@ export = (app: Probot): void => {
           context.octokit,
           originalIssueUrl
         )
-        if (!originalIssue || !originalIssue.repository) return
+        if (!originalIssue?.repository) return
 
         // notify original issue that upstream is resolved
         await context.octokit.issues.createComment(
