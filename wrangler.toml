@@ -1,0 +1,7 @@
+name = "tauri-apps-bot"
+type = "javascript"
+account_id = "65f1e63f0739733d87d79c7e55b819b4"
+[build]
+command = "yarn && yarn build:worker"
+[build.upload]
+format = "service-worker"

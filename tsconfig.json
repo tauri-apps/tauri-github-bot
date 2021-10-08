@@ -2,11 +2,12 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "lib": ["es2015", "es2017"],
+    "lib": ["es2015", "es2017", "WebWorker"],
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["@cloudflare/workers-types"]
   },
   "include": ["src/"]
 }
