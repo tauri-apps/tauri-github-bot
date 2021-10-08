@@ -9,12 +9,12 @@ specifiers:
   eslint-config-prettier: 8.3.0
   husky: 7.0.2
   prettier: 2.4.1
-  probot: 11.4.1
+  probot: 12.1.1
   tsup: 5.4.0
   typescript: 4.4.3
 
 dependencies:
-  probot: 11.4.1
+  probot: 12.1.1
 
 devDependencies:
   '@octokit/rest': 18.12.0
@@ -288,14 +288,21 @@ packages:
     dependencies:
       '@octokit/openapi-types': 11.0.0
 
-  /@octokit/webhooks/7.21.0:
-    resolution: {integrity: sha512-Mj7Pa6JZgSjfzQfYF3Bf5KpyhzEBv4kHbj2EjCB/vMQiZCiiW30j5rS6t/d0ZN0FBrlSOuJIT+YU8IJt30VyWA==}
+  /@octokit/webhooks-methods/2.0.0:
+    resolution: {integrity: sha512-35cfQ4YWlnZnmZKmIxlGPUPLtbkF8lr/A/1Sk1eC0ddLMwQN06dOuLc+dI3YLQS+T+MoNt3DIQ0NynwgKPilig==}
+    dev: false
+
+  /@octokit/webhooks-types/4.10.0:
+    resolution: {integrity: sha512-3x4OsnsGKs77zBQlzZjcgdSVRFhw+x+Tt7gt1dtKakKjzwa6NtI8n9m/IB1vR+v8Km1qrN+S26IHYj20IQlFdg==}
+    dev: false
+
+  /@octokit/webhooks/9.16.0:
+    resolution: {integrity: sha512-SITUlQUpnuv3XvDNmU31Sk6gyw87UMwmY15PFmBduQtsJ98tb+z/UwvPeepD4XFfZA3JvGwprtY4eUJSkWbmEw==}
     dependencies:
       '@octokit/request-error': 2.1.0
+      '@octokit/webhooks-methods': 2.0.0
+      '@octokit/webhooks-types': 4.10.0
       aggregate-error: 3.1.0
-      debug: 4.3.2
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /@probot/get-private-key/1.1.1:
@@ -2646,8 +2653,8 @@ packages:
     hasBin: true
     dev: true
 
-  /probot/11.4.1:
-    resolution: {integrity: sha512-kxNImVNZIheWtDUFbQSp0F1Qb7EEi4MvZRtKFBQPS3GSklC+u4oqnILfH4GsmXs0g+brrIX7g8qf/SUyDkw2sw==}
+  /probot/12.1.1:
+    resolution: {integrity: sha512-ETuk/uRldzV58KwLCfXqAfdXTNDwT4NvHoWnigBFXACYO0DhORAxAd0gwK1HpRgl3ROgyPr5f7pKQCP3g3FFVw==}
     engines: {node: '>=10.21'}
     hasBin: true
     dependencies:
@@ -2658,7 +2665,7 @@ packages:
       '@octokit/plugin-retry': 3.0.9
       '@octokit/plugin-throttling': 3.5.2_@octokit+core@3.5.1
       '@octokit/types': 6.32.0
-      '@octokit/webhooks': 7.21.0
+      '@octokit/webhooks': 9.16.0
       '@probot/get-private-key': 1.1.1
       '@probot/octokit-plugin-config': 1.1.2_@octokit+core@3.5.1
       '@probot/pino': 2.3.4
