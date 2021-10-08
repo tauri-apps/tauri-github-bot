@@ -25,7 +25,6 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^2.2.2",
-    "@cloudflare/wrangler": "^1.19.3",
     "@octokit/rest": "18.12.0",
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
