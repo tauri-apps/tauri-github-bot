@@ -1,0 +1,34 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm i -g pnpm
+      - run: pnpm i
+      - run: pnpm build
+      - run: pnpm lint
+      - run: pnpm format
+      - name: Sync to glitch
+        run: |
+          sed "s/dist\///" package.json > dist/package.json
+          ls dist
+          cd dist
+          git init
+          git config user.email "48618675+amrbashir@users.noreply.github.com"
+          git config user.name "amrbashir"
+          git remote add origin ${{ secrets.GLITCH_GIT_URL }}
+          git fetch
+          git add .
+          git commit -m "init"
+          git push -f -u origin master
