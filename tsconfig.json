@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2018",
-    "module": "esnext",
-    "lib": ["esnext"],
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es2015", "es2017"],
+    "outDir": "./lib",
+    "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "strict": true,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/"]
 }
