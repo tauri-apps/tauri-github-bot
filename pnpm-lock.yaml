@@ -2,7 +2,6 @@ lockfileVersion: 5.3
 
 specifiers:
   '@octokit/rest': 18.12.0
-  '@types/node': 14.17.21
   '@typescript-eslint/eslint-plugin': 4.33.0
   '@typescript-eslint/parser': 4.33.0
   eslint: 7.32.0
@@ -18,7 +17,6 @@ dependencies:
 
 devDependencies:
   '@octokit/rest': 18.12.0
-  '@types/node': 14.17.21
   '@typescript-eslint/eslint-plugin': 4.33.0_d753869925cce96d3eb2141eeedafe57
   '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.4.3
   eslint: 7.32.0
@@ -489,6 +487,7 @@ packages:
 
   /@types/node/14.17.21:
     resolution: {integrity: sha512-zv8ukKci1mrILYiQOwGSV4FpkZhyxQtuFWGya2GujWg+zVAeRQ4qbaMmWp9vb9889CFA8JECH7lkwCL6Ygg8kA==}
+    dev: false
 
   /@types/pino-http/5.8.0:
     resolution: {integrity: sha512-/gKFhkzVotTl61mMacH5qptjBOGGqZyVXCRhDDVPg76JdmYYO0bftZV0lcAY7sAzCCZQciTsGdQcv0/B1X3C9Q==}

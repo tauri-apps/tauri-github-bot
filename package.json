@@ -14,8 +14,7 @@
   "scripts": {
     "prepare": "husky install",
     "build": "tsup",
-    "dev": "tsup --watch src",
-    "start": "probot run ./lib/index.js",
+    "start": "probot run ./dist/index.js",
     "lint": "eslint src/**/*.ts",
     "format": "prettier --write --end-of-line=auto \"./**/*.{js,ts,json}\" --ignore-path .gitignore"
   },
@@ -24,7 +23,6 @@
   },
   "devDependencies": {
     "@octokit/rest": "18.12.0",
-    "@types/node": "14.17.21",
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
     "eslint": "7.32.0",

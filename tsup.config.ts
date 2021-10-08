@@ -1,6 +1,6 @@
 export = {
   entryPoints: ['src/index.ts'],
-  outDir: 'lib',
+  outDir: 'dist',
   format: ['cjs'],
   clean: true,
 }
