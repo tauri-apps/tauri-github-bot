@@ -14,7 +14,7 @@ import {
 } from './templates'
 import { getIssueFromUrl, isTauriOrgMemeber } from './util'
 
-export = (app: Probot): void => {
+export default (app: Probot): void => {
   try {
     app.on('issue_comment.created', async (context) => {
       const matches = COMMAND_REGEX.exec(context.payload.comment.body)
