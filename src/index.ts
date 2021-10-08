@@ -1,7 +1,6 @@
 import { Probot } from 'probot'
 import {
   COMMAND_REGEX,
-  ORG_MEMBERS,
   TAURI_BOT_NAME,
   TAURI_ORG_NAME,
   UPSTREAM_LABEL,
@@ -13,7 +12,7 @@ import {
   upstreamIssueBodyPredicate,
   upstreamIssueResolved,
 } from './templates'
-import { getIssueFromUrl } from './util'
+import { getIssueFromUrl, isTauriOrgMemeber } from './util'
 
 export = (app: Probot): void => {
   try {
@@ -33,7 +32,7 @@ export = (app: Probot): void => {
           // upstream to a repo that doesn't belong to tauri-apps is not allowed
           repository.owner.login === TAURI_ORG_NAME ||
           // upstream from a user that is not a memeber in tauri-apps org, is not allowed
-          !ORG_MEMBERS.includes(sender.login)
+          !(await isTauriOrgMemeber(context.octokit, sender.login))
         )
           return
 
