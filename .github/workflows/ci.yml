@@ -13,6 +13,5 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm i -g pnpm
       - run: pnpm i
-      - run: pnpm ts-check
       - run: pnpm lint
       - run: pnpm format
