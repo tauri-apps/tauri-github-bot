@@ -9,7 +9,7 @@ specifiers:
   husky: 7.0.2
   prettier: 2.4.1
   probot: 12.1.1
-  tsup: 5.4.0
+  tsup: 5.4.2
   typescript: 4.4.4
 
 dependencies:
@@ -23,7 +23,7 @@ devDependencies:
   eslint-config-prettier: 8.3.0_eslint@8.0.1
   husky: 7.0.2
   prettier: 2.4.1
-  tsup: 5.4.0_typescript@4.4.4
+  tsup: 5.4.2_typescript@4.4.4
   typescript: 4.4.4
 
 packages:
@@ -3089,8 +3089,8 @@ packages:
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
 
-  /tsup/5.4.0_typescript@4.4.4:
-    resolution: {integrity: sha512-wm52TUJzDCvF9dJ3TxYtoJg8L7EjSYsOsH+jZhMMXfk1qZn6CdxFStwzMnwhyducdMBXHQNl7wZn+ioIhJoCHA==}
+  /tsup/5.4.2_typescript@4.4.4:
+    resolution: {integrity: sha512-R6Vxq6lrxvKBc9ZbJShHqARlysCxcEAXss9iyLPbZZDIl3CSftrO2IN0Flgkt6hMt1sTwgsXL3v5Ot3l305W1Q==}
     hasBin: true
     peerDependencies:
       typescript: ^4.2.3
