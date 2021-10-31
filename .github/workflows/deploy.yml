@@ -31,6 +31,7 @@ jobs:
       - name: Sync to glitch
         run: |
           sed "s/dist\///" package.json > dist/package.json
+          sed -i '/\"devDependencies\"/,/}/ d; /^$/d' dist/package.json
           ls dist
           cd dist
           git init
