@@ -111,6 +111,15 @@ export default (app: Probot): void => {
             repo: originalIssue.repository.name,
           })
         )
+
+        // remove upstream label
+        await context.octokit.issues.removeLabel(
+          context.issue({
+            name: UPSTREAM_LABEL,
+            owner: originalIssue.repository.owner,
+            repo: originalIssue.repository.name,
+          })
+        )
       }
     })
   } catch (e) {
