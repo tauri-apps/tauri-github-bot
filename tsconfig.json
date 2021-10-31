@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es2020",
     "module": "esnext",
-    "lib": ["esnext"],
     "strict": true,
-    "moduleResolution": "node",
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "resolveJsonModule": true
   },
-  "include": ["src/"]
+  "include": ["src/**/*.ts"]
 }

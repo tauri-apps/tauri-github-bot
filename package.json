@@ -15,6 +15,7 @@
     "prepare": "husky install",
     "build": "tsup",
     "start": "probot run ./dist/index.js",
+    "type-check": "tsc --noEmit",
     "lint": "eslint src/**/*.ts",
     "format": "prettier --write --end-of-line=auto \"./**/*.{js,ts,json}\" --ignore-path .gitignore"
   },
