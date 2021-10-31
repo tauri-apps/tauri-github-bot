@@ -7,4 +7,4 @@ A bot for tauri-apps org to automate various tasks and intended to used only by 
   - on: `['issues']`
   - by: `['member of tauri-apps']`
   - supported owners: `['tauri-apps']`
-  - supported upstream repos: `['tauri', 'tao', 'wry', 'win7-notifications']`
+  - supported upstream repos: `['tauri-apps/*']`

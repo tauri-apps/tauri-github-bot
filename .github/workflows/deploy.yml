@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - master
+      - dev
 
 jobs:
   deploy:
@@ -32,7 +32,10 @@ jobs:
         run: |
           sed "s/dist\///" package.json > dist/package.json
           sed -i '/\"devDependencies\"/,/}/ d; /^$/d' dist/package.json
-          ls dist
+          echo 'APP_ID=${{ secrets.APP_ID }}' >> dist/.env
+          echo 'PRIVATE_KEY="${{ secrets.PRIVATE_KEY }}"' >> dist/.env
+          echo 'WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}' >> dist/.env
+          ls -a dist
           cd dist
           git init
           git config user.email "48618675+amrbashir@users.noreply.github.com"

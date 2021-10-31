@@ -1,5 +1,5 @@
-import { Octokit, RestEndpointMethodTypes } from '@octokit/rest'
-import { TAURI_ORG_NAME } from './constants'
+import type { Octokit, RestEndpointMethodTypes } from '@octokit/rest'
+import { TAURI_ORG } from './constants'
 
 export async function getIssueFromUrl(
   octokit: Octokit,
@@ -23,7 +23,7 @@ export async function isTauriOrgMemeber(
   octokit: Octokit,
   user: string
 ): Promise<boolean> {
-  return (await octokit.orgs.listMembers({ org: TAURI_ORG_NAME })).data
+  return (await octokit.orgs.listMembers({ org: TAURI_ORG })).data
     .map((u) => u.login)
     .includes(user)
 }

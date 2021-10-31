@@ -1,8 +1,8 @@
 import { Probot } from 'probot'
 import {
   COMMAND_REGEX,
-  TAURI_BOT_NAME,
-  TAURI_ORG_NAME,
+  TAURI_APPS_BOT,
+  TAURI_ORG,
   UPSTREAM_LABEL,
   UPSTREAM_RESOLVED_LABEL,
 } from './constants'
@@ -30,7 +30,7 @@ export default (app: Probot): void => {
           // upstream to same repo is not allowed
           (cRepo === repository.name && cOwner === repository.owner.login) ||
           // upstream to a repo that doesn't belong to tauri-apps is not allowed
-          repository.owner.login !== TAURI_ORG_NAME ||
+          repository.owner.login !== TAURI_ORG ||
           // upstream from a user that is not a memeber in tauri-apps org, is not allowed
           !(await isTauriOrgMemeber(context.octokit, sender.login))
         )
@@ -78,9 +78,9 @@ export default (app: Probot): void => {
 
       if (
         // an issue is closed in a tauri-apps repo
-        repository.owner.login === TAURI_ORG_NAME &&
+        repository.owner.login === TAURI_ORG &&
         // and created by our bot
-        issue.user.login === TAURI_BOT_NAME &&
+        issue.user.login === TAURI_APPS_BOT &&
         // and it was from an upstream command
         issue.body?.startsWith(upstreamIssueBodyPredicate)
       ) {
@@ -103,7 +103,7 @@ export default (app: Probot): void => {
           })
         )
 
-        // add label
+        // add upstream resolved label
         await context.octokit.issues.addLabels(
           context.issue({
             labels: [UPSTREAM_RESOLVED_LABEL],
