@@ -26,7 +26,6 @@ jobs:
       - run: pnpm i
       - run: pnpm build
       - run: pnpm type-check
-      - run: pnpm lint
       - run: pnpm format
       - name: Sync to glitch
         run: |
