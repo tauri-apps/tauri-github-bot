@@ -26,7 +26,6 @@ jobs:
       - run: pnpm i
       - run: pnpm build
       - run: pnpm type-check
-      - run: pnpm format
       - name: Sync to glitch
         run: |
           sed "s/dist\///" package.json > dist/package.json
@@ -37,8 +36,8 @@ jobs:
           ls -a dist
           cd dist
           git init
-          git config user.email "48618675+amrbashir@users.noreply.github.com"
-          git config user.name "amrbashir"
+          git config user.email "action@github.com"
+          git config user.name "Github Action"
           git remote add origin ${{ secrets.GLITCH_GIT_URL }}
           git fetch
           git add .
