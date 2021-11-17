@@ -5,7 +5,7 @@ specifiers:
   prettier: 2.4.1
   probot: 12.1.1
   tsup: 5.7.1
-  typescript: 4.4.4
+  typescript: 4.5.2
 
 dependencies:
   probot: 12.1.1
@@ -13,8 +13,8 @@ dependencies:
 devDependencies:
   '@octokit/rest': 18.12.0
   prettier: 2.4.1
-  tsup: 5.7.1_typescript@4.4.4
-  typescript: 4.4.4
+  tsup: 5.7.1_typescript@4.5.2
+  typescript: 4.5.2
 
 packages:
 
@@ -2606,7 +2606,7 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: false
 
-  /tsup/5.7.1_typescript@4.4.4:
+  /tsup/5.7.1_typescript@4.5.2:
     resolution: {integrity: sha512-ZRhyJE2QoVKyCKz6i6wh/4LIpD9xpQ1J4JIY6ZupxxLB1aQfVl7N16Ur9+ZjqknPt/jRn/wnV/OnypuRP0MgBQ==}
     hasBin: true
     peerDependencies:
@@ -2628,7 +2628,7 @@ packages:
       rollup: 2.58.0
       sucrase: 3.20.2
       tree-kill: 1.2.2
-      typescript: 4.4.4
+      typescript: 4.5.2
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -2663,8 +2663,8 @@ packages:
       is-typedarray: 1.0.0
     dev: false
 
-  /typescript/4.4.4:
-    resolution: {integrity: sha512-DqGhF5IKoBl8WNf8C1gu8q0xZSInh9j1kJJMqT3a94w1JzVaBU4EXOSMrz9yDqMT0xt3selp83fuFMQ0uzv6qA==}
+  /typescript/4.5.2:
+    resolution: {integrity: sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
