@@ -22,7 +22,7 @@
   "devDependencies": {
     "@octokit/rest": "18.12.0",
     "prettier": "2.5.0",
-    "tsup": "5.9.2",
+    "tsup": "5.10.0",
     "typescript": "4.5.2"
   }
 }
