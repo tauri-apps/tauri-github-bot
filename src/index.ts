@@ -47,6 +47,7 @@ export default (app: Probot): void => {
             context.issue({
               title,
               body: upstreamIssueBody(html_url, body ?? ''),
+              labels: context.payload.issue.labels,
               repo: cRepo,
               owner: cOwner,
             })
