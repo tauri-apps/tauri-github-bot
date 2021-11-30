@@ -26,20 +26,10 @@ jobs:
       - run: pnpm i
       - run: pnpm build
       - run: pnpm type-check
-      - name: Sync to glitch
-        run: |
-          sed "s/dist\///" package.json > dist/package.json
-          sed -i '/\"devDependencies\"/,/}/ d; /^$/d' dist/package.json
-          echo 'APP_ID=${{ secrets.APP_ID }}' >> dist/.env
-          echo 'PRIVATE_KEY="${{ secrets.PRIVATE_KEY }}"' >> dist/.env
-          echo 'WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}' >> dist/.env
-          ls -a dist
-          cd dist
-          git init
-          git config user.email "action@github.com"
-          git config user.name "Github Action"
-          git remote add origin ${{ secrets.GLITCH_GIT_URL }}
-          git fetch
-          git add .
-          git commit -m "init"
-          git push -f -u origin master
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.DIGITAL_OCEAN_SSH_KEY }}
+          known_hosts: ${{ secrets.DIGITAL_OCEAN_SSH_KNOWN_HOSTS }}
+      - name: Deploy to DigitalOcean
+        run: ssh ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }} "cd ~/tauri-apps-bot; git pull; rm .env; echo 'APP_ID=${{ secrets.APP_ID }}' >> .env; echo 'PRIVATE_KEY="${{ secrets.PRIVATE_KEY }}"' >> .env; echo 'WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}' >> .env; echo 'PORT=9000' >> .env; ls -lah; pnpm i; pm2 delete 'tauri-apps-github-bot' ; pm2 start pnpm --name 'tauri-apps-github-bot' -- start"
