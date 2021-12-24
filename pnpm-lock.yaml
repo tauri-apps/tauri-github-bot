@@ -4,7 +4,7 @@ specifiers:
   '@octokit/rest': 18.12.0
   prettier: 2.5.1
   probot: 12.1.3
-  tsup: 5.11.7
+  tsup: 5.11.8
   typescript: 4.5.4
 
 dependencies:
@@ -13,7 +13,7 @@ dependencies:
 devDependencies:
   '@octokit/rest': 18.12.0
   prettier: 2.5.1
-  tsup: 5.11.7_typescript@4.5.4
+  tsup: 5.11.8_typescript@4.5.4
   typescript: 4.5.4
 
 packages:
@@ -2640,11 +2640,11 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: false
 
-  /tsup/5.11.7_typescript@4.5.4:
-    resolution: {integrity: sha512-p3NXi/0TahcvlB6CHgsPQZ179Qx0YYPEn4GEkirDbUT3CifPHO6RtZMmPW2v2IXmWsFMg5ZSqzHRnCGtMnjDWw==}
+  /tsup/5.11.8_typescript@4.5.4:
+    resolution: {integrity: sha512-MB348Kkip7NlHkISq/1YxNauj6qc8yiOL5mslUifLZtjBKEbSasaGdQRTRcHeM+cZ31sA+59XAnNyEIAjZajCQ==}
     hasBin: true
     peerDependencies:
-      typescript: ^4.2.3
+      typescript: ^4.5.4
     peerDependenciesMeta:
       typescript:
         optional: true
