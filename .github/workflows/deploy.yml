@@ -32,4 +32,4 @@ jobs:
           key: ${{ secrets.DIGITAL_OCEAN_SSH_KEY }}
           known_hosts: ${{ secrets.DIGITAL_OCEAN_SSH_KNOWN_HOSTS }}
       - name: Deploy to DigitalOcean
-        run: ssh ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }} "cd ~/tauri-apps-bot && git pull && rm .env; echo 'APP_ID=${{ secrets.APP_ID }}' >> .env && echo 'PRIVATE_KEY="${{ secrets.PRIVATE_KEY }}"' >> .env && echo 'WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}' >> .env && echo 'PORT=9000' >> .env && ls -lah && pnpm i && pnpm build && pm2 delete 'tauri-apps-github-bot' ; pm2 start pnpm --name 'tauri-apps-github-bot' -- start"
+        run: ssh ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }} "cd ~/tauri-apps-bot && git pull && rm .env; echo 'APP_ID=${{ secrets.APP_ID }}' >> .env && echo 'WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}' >> .env && echo 'PORT=9000' >> .env && echo '${{ secrets.PRIVATE_KEY }}' >> tauri-apps.2021-12-31.private-key.pem && ls -lah && pnpm i && pnpm build && pm2 delete 'tauri-apps-github-bot' ; pm2 start pnpm --name 'tauri-apps-github-bot' -- start"
