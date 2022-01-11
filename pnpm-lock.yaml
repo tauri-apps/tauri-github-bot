@@ -3,12 +3,12 @@ lockfileVersion: 5.3
 specifiers:
   '@octokit/rest': 18.12.0
   prettier: 2.5.1
-  probot: 12.1.4
+  probot: 12.2.0
   tsup: 5.11.11
   typescript: 4.5.4
 
 dependencies:
-  probot: 12.1.4
+  probot: 12.2.0
 
 devDependencies:
   '@octokit/rest': 18.12.0
@@ -2180,8 +2180,8 @@ packages:
     hasBin: true
     dev: true
 
-  /probot/12.1.4:
-    resolution: {integrity: sha512-pbvXXeZwIdi/vWk0Xtxe78ElDvczhzEzOjWjfxINyHCAA5cHaXF7+yX/bnDRZ9O0mEJB472H/NcMrT81Uy7kVg==}
+  /probot/12.2.0:
+    resolution: {integrity: sha512-8QO0G82Pf5ksMaT+3sWdiP7C3Gd2H23h+BwkvqHlpVnxRLc96KWdwdjKuergpg3DK4661VLjUQa35uiMGctoZQ==}
     engines: {node: '>=10.21'}
     hasBin: true
     dependencies:
