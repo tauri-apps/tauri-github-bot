@@ -80,7 +80,7 @@ export default (app: Probot): void => {
       if (
         // an issue is closed in a tauri-apps repo
         repository.owner.login === TAURI_ORG &&
-        // and created by our bot
+        // and was created by our bot
         issue.user.login === TAURI_APPS_BOT &&
         // and it was from an upstream command
         issue.body?.startsWith(upstreamIssueBodyPredicate)
