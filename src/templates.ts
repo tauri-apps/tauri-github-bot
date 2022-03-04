@@ -1,4 +1,5 @@
-export const upstreamIssueBodyPredicate = '> This issue has been upstream from'
+export const upstreamIssueBodyPredicate =
+  '> This issue has been upstreamed from'
 export const upstreamIssueBody = (
   originalIssueUrl: string,
   body: string

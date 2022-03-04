@@ -1,7 +1,10 @@
+import { Octokit } from '@octokit/rest'
 import { Probot } from 'probot'
 import {
   COMMAND_REGEX,
   TAURI_APPS_BOT,
+  TAURI_BOT_ACC,
+  TAURI_BOT_ACC_OCTOKIT,
   TAURI_ORG,
   UPSTREAM_LABEL,
   UPSTREAM_RESOLVED_LABEL,
@@ -26,51 +29,50 @@ export default (app: Probot): void => {
 
         if (
           // commands from bot is not allowed
-          context.isBot ||
-          // upstream to same repo is not allowed
-          (cRepo === repository.name && cOwner === repository.owner.login) ||
-          // upstream to a repo that doesn't belong to tauri-apps is not allowed
-          repository.owner.login !== TAURI_ORG ||
-          // upstream from a user that is not a memeber in tauri-apps org, is not allowed
-          !(await isTauriOrgMemeber(sender.login))
-        )
-          return
+          !context.isBot &&
+          // only upstream if it is not the same repo
+          !(cRepo === repository.name && cOwner === repository.owner.login) &&
+          // only upstream to a repo that belongs to tauri-apps
+          repository.owner.login === TAURI_ORG &&
+          // only upstream from a user that is a memeber in tauri-apps org
+          (await isTauriOrgMemeber(sender.login))
+        ) {
+          app.log.info(
+            `Running \`/upstream\` command to ${cOwner}/${cRepo} from ${sender.login}.`
+          )
 
-        app.log.info(
-          `Running \`/upstream\` command to ${cOwner}/${cRepo} from ${sender.login}.`
-        )
+          // create upstream issue
+          const { title, body, html_url } = context.payload.issue
+          const { html_url: upstreamIssueUrl } = (
+            await TAURI_BOT_ACC_OCTOKIT.issues.create(
+              context.issue({
+                title,
+                body: upstreamIssueBody(html_url, body ?? ''),
+                labels: context.payload.issue.labels,
+                repo: cRepo,
+                owner: cOwner,
+              })
+            )
+          ).data
 
-        // create upstream issue
-        const { title, body, html_url } = context.payload.issue
-        const { html_url: upstreamIssueUrl } = (
-          await context.octokit.issues.create(
+          // comment on original issue
+          await context.octokit.issues.createComment(
             context.issue({
-              title,
-              body: upstreamIssueBody(html_url, body ?? ''),
-              labels: context.payload.issue.labels,
-              repo: cRepo,
+              body: issueUpstreamedComment(upstreamIssueUrl),
+              repo: repository.name,
               owner: cOwner,
             })
           )
-        ).data
 
-        // comment on original issue
-        await context.octokit.issues.createComment(
-          context.issue({
-            body: issueUpstreamedComment(upstreamIssueUrl),
-            repo: repository.name,
-            owner: cOwner,
-          })
-        )
-
-        // add label
-        await context.octokit.issues.addLabels(
-          context.issue({
-            labels: [UPSTREAM_LABEL],
-            repo: repository.name,
-            owner: cOwner,
-          })
-        )
+          // add label
+          await context.octokit.issues.addLabels(
+            context.issue({
+              labels: [UPSTREAM_LABEL],
+              repo: repository.name,
+              owner: cOwner,
+            })
+          )
+        }
       }
     })
 
@@ -81,7 +83,9 @@ export default (app: Probot): void => {
         // an issue is closed in a tauri-apps repo
         repository.owner.login === TAURI_ORG &&
         // and was created by our bot
-        issue.user.login === TAURI_APPS_BOT &&
+        (issue.user.login === TAURI_APPS_BOT ||
+          // or was created by tauri-bot account
+          issue.user.login === TAURI_BOT_ACC) &&
         // and it was from an upstream command
         issue.body?.startsWith(upstreamIssueBodyPredicate)
       ) {
