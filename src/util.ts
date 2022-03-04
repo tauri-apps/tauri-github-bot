@@ -1,5 +1,5 @@
-import type { Octokit, RestEndpointMethodTypes } from '@octokit/rest'
-import { TAURI_ORG } from './constants'
+import { Octokit, RestEndpointMethodTypes } from '@octokit/rest'
+import { TAURI_BOT_ACC_TOKEN, TAURI_ORG } from './constants'
 
 export async function getIssueFromUrl(
   octokit: Octokit,
@@ -19,11 +19,13 @@ export async function getIssueFromUrl(
   ).data
 }
 
-export async function isTauriOrgMemeber(
-  octokit: Octokit,
-  user: string
-): Promise<boolean> {
-  return (await octokit.orgs.listMembers({ org: TAURI_ORG })).data
-    .map((u) => u.login)
-    .includes(user)
+export async function isTauriOrgMemeber(user: string): Promise<boolean> {
+  if (TAURI_BOT_ACC_TOKEN) {
+    let octokit = new Octokit({ auth: TAURI_BOT_ACC_TOKEN })
+    return (await octokit.orgs.listMembers({ org: TAURI_ORG })).data
+      .map((u) => u.login)
+      .includes(user)
+  } else {
+    return false
+  }
 }

@@ -32,7 +32,7 @@ export default (app: Probot): void => {
           // upstream to a repo that doesn't belong to tauri-apps is not allowed
           repository.owner.login !== TAURI_ORG ||
           // upstream from a user that is not a memeber in tauri-apps org, is not allowed
-          !(await isTauriOrgMemeber(context.octokit, sender.login))
+          !(await isTauriOrgMemeber(sender.login))
         )
           return
 
