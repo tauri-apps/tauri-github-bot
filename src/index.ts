@@ -10,10 +10,10 @@ import {
   UPSTREAM_RESOLVED_LABEL,
 } from './constants'
 import {
-  issueUpstreamedComment,
-  upstreamIssueBody,
-  upstreamIssueBodyPredicate,
-  upstreamIssueResolved,
+  getUpstreamIssueBody,
+  UPSTREAM_ISSUE_BODY_PREDICATE,
+  getUpstreamIssueClosedComment,
+  UPSTREAM_ISSUE_BODY_SEPARATOR,
 } from './templates'
 import { getIssueFromUrl, isTauriOrgMemeber } from './util'
 
@@ -43,26 +43,14 @@ export default (app: Probot): void => {
 
           // create upstream issue
           const { title, body, html_url } = context.payload.issue
-          const { html_url: upstreamIssueUrl } = (
-            await TAURI_BOT_ACC_OCTOKIT.issues.create(
-              context.issue({
-                title,
-                body: upstreamIssueBody(html_url, body ?? ''),
-                labels: context.payload.issue.labels,
-                repo: cRepo,
-                owner: cOwner,
-              })
-            )
-          ).data
 
-          // comment on original issue
-          await context.octokit.issues.createComment(
-            context.issue({
-              body: issueUpstreamedComment(upstreamIssueUrl),
-              repo: repository.name,
-              owner: cOwner,
-            })
-          )
+          await TAURI_BOT_ACC_OCTOKIT.issues.create({
+            title,
+            body: getUpstreamIssueBody(html_url, body ?? ''),
+            labels: context.payload.issue.labels,
+            repo: cRepo,
+            owner: cOwner,
+          })
 
           // add label
           await context.octokit.issues.addLabels(
@@ -87,44 +75,43 @@ export default (app: Probot): void => {
           // or was created by tauri-bot account
           issue.user.login === TAURI_BOT_ACC) &&
         // and it was from an upstream command
-        issue.body?.startsWith(upstreamIssueBodyPredicate)
+        issue.body?.startsWith(UPSTREAM_ISSUE_BODY_PREDICATE)
       ) {
         const originalIssueUrl = issue.body
-          .replace(upstreamIssueBodyPredicate, '')
-          .split('\n\n')[0]
+          .replace(UPSTREAM_ISSUE_BODY_PREDICATE, '')
+          .split(UPSTREAM_ISSUE_BODY_SEPARATOR)[0]
           .trim()
+
         const originalIssue = await getIssueFromUrl(
           context.octokit,
           originalIssueUrl
         )
+
         if (!originalIssue?.repository) return
 
         // notify original issue that upstream is resolved
-        await context.octokit.issues.createComment(
-          context.issue({
-            body: upstreamIssueResolved(issue.html_url),
-            owner: originalIssue.repository.owner,
-            repo: originalIssue.repository.name,
-          })
-        )
+        await context.octokit.issues.createComment({
+          body: getUpstreamIssueClosedComment(issue.html_url),
+          owner: originalIssue.repository.owner.name ?? TAURI_ORG,
+          repo: originalIssue.repository.name,
+          issue_number: originalIssue.number,
+        })
 
         // add upstream resolved label
-        await context.octokit.issues.addLabels(
-          context.issue({
-            labels: [UPSTREAM_RESOLVED_LABEL],
-            owner: originalIssue.repository.owner,
-            repo: originalIssue.repository.name,
-          })
-        )
+        await context.octokit.issues.addLabels({
+          labels: [UPSTREAM_RESOLVED_LABEL],
+          owner: originalIssue.repository.owner.name ?? TAURI_ORG,
+          repo: originalIssue.repository.name,
+          issue_number: originalIssue.number,
+        })
 
         // remove upstream label
-        await context.octokit.issues.removeLabel(
-          context.issue({
-            name: UPSTREAM_LABEL,
-            owner: originalIssue.repository.owner,
-            repo: originalIssue.repository.name,
-          })
-        )
+        await context.octokit.issues.removeLabel({
+          name: UPSTREAM_LABEL,
+          owner: originalIssue.repository.owner.name ?? TAURI_ORG,
+          repo: originalIssue.repository.name,
+          issue_number: originalIssue.number,
+        })
       }
     })
   } catch (e) {

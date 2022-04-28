@@ -1,10 +1,12 @@
-export const upstreamIssueBodyPredicate =
+export const UPSTREAM_ISSUE_BODY_PREDICATE =
   '> This issue has been upstreamed from'
-export const upstreamIssueBody = (
+export const UPSTREAM_ISSUE_BODY_SEPARATOR = '\n\n'
+export function getUpstreamIssueBody(
   originalIssueUrl: string,
   body: string
-): string => `${upstreamIssueBodyPredicate} ${originalIssueUrl} \n\n${body}`
-export const issueUpstreamedComment = (url: string): string =>
-  `I have created an upstream issue at ${url}, I will notify you once it is resolved.`
-export const upstreamIssueResolved = (url: string): string =>
-  `Upstream issue at ${url} probably got resolved.`
+): string {
+  return `${UPSTREAM_ISSUE_BODY_PREDICATE} ${originalIssueUrl} ${UPSTREAM_ISSUE_BODY_SEPARATOR}${body}`
+}
+export function getUpstreamIssueClosedComment(url: string): string {
+  return `Upstream issue at ${url} has been closed.`
+}
