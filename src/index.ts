@@ -87,7 +87,7 @@ export default (app: Probot): void => {
           originalIssueUrl
         )
 
-        if (!originalIssue?.repository) return
+        if (!originalIssue?.repository || originalIssue?.state === "closed") return
 
         // notify original issue that upstream is resolved
         await context.octokit.issues.createComment({
