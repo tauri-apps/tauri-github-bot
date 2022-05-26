@@ -3,12 +3,12 @@ lockfileVersion: 5.3
 specifiers:
   '@octokit/rest': 18.12.0
   prettier: 2.6.2
-  probot: 12.2.2
+  probot: 12.2.3
   tsup: 6.0.1
   typescript: 4.7.2
 
 dependencies:
-  probot: 12.2.2
+  probot: 12.2.3
 
 devDependencies:
   '@octokit/rest': 18.12.0
@@ -586,7 +586,7 @@ packages:
     dev: false
 
   /array-flatten/1.1.1:
-    resolution: {integrity: sha1-ml9pkFGx5wczKPKgCJaLZOopVdI=}
+    resolution: {integrity: sha512-PCVAQswWemu6UdxsDFFX/+gVeYqKAod3D3UVm91jHwynguOwAvYPhx8nNlM++NqRcK6CxxpUafjmhIdKiHibqg==}
     dev: false
 
   /array-union/2.1.0:
@@ -674,11 +674,11 @@ packages:
     dev: true
 
   /btoa-lite/1.0.0:
-    resolution: {integrity: sha1-M3dm2hWAEhD92VbCLpxokaudAzc=}
+    resolution: {integrity: sha512-gvW7InbIyF8AicrqWoptdW08pUxuhq8BEgowNajy9RhiE86fmGAGl+bLKo6oB8QP0CkqHLowfN0oJdKC/J6LbA==}
     dev: false
 
   /buffer-equal-constant-time/1.0.1:
-    resolution: {integrity: sha1-+OcRMvf/5uAaXJaXpMbz5I1cyBk=}
+    resolution: {integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==}
     dev: false
 
   /bundle-require/3.0.4_esbuild@0.14.29:
@@ -1230,11 +1230,9 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /eventsource/1.1.0:
-    resolution: {integrity: sha512-VSJjT5oCNrFvCS6igjzPAt5hBzQ2qPBFIbJ03zLI9SE0mxwZpMw6BfJrbFHm1a141AavMEB8JHmBhWAd66PfCg==}
-    engines: {node: '>=0.12.0'}
-    dependencies:
-      original: 1.0.2
+  /eventsource/2.0.2:
+    resolution: {integrity: sha512-IzUmBGPR3+oUG9dUeXynyNmf91/3zUSJg1lCktzKw47OXuhco54U3r9B7O4XX+Rb1Itm9OZ2b0RkTs10bICOxA==}
+    engines: {node: '>=12.0.0'}
     dev: false
 
   /execa/5.1.1:
@@ -2061,12 +2059,6 @@ packages:
       mimic-fn: 2.1.0
     dev: true
 
-  /original/1.0.2:
-    resolution: {integrity: sha512-hyBVl6iqqUOJ8FqRe+l/gS8H+kKYjrEndd5Pm1MfBtsEKA038HkkdbAl/72EAXGyonD/PFsvmVG+EvcIpliMBg==}
-    dependencies:
-      url-parse: 1.5.4
-    dev: false
-
   /p-cancelable/1.1.0:
     resolution: {integrity: sha512-s73XxOZ4zpt1edZYZzvhqFa6uvQc1vwUa0K0BdtIZgQMAJj9IbebH+JkgKZc9h+B05PKHLOTl4ajG1BmNrVZlw==}
     engines: {node: '>=6'}
@@ -2240,8 +2232,8 @@ packages:
     hasBin: true
     dev: true
 
-  /probot/12.2.2:
-    resolution: {integrity: sha512-I2WU3KzLdF6O5GZIAMzcf/FJ/GTKmITl2Si3ccoNKB0dhR0038787kamrDrGBWKkp9fBZrkSKiLRNOePMFYYgA==}
+  /probot/12.2.3:
+    resolution: {integrity: sha512-ZQg8wdulcQqA7kw7pHWkV7TGBkksVJGAguem9dwaEE+709Kc8R6HHhxI9umeS4Te+UFPzS33n3ocKY9uhFyrfw==}
     engines: {node: '>=10.21'}
     hasBin: true
     dependencies:
@@ -2265,7 +2257,7 @@ packages:
       deepmerge: 4.2.2
       deprecation: 2.3.1
       dotenv: 8.6.0
-      eventsource: 1.1.0
+      eventsource: 2.0.2
       express: 4.17.2
       express-handlebars: 6.0.3
       ioredis: 4.28.4
@@ -2323,10 +2315,6 @@ packages:
   /qs/6.9.6:
     resolution: {integrity: sha512-TIRk4aqYLNoJUbd+g2lEdz5kLWIuTMRagAXxl78Q0RiVjAOugHmeKNGdd3cwo/ktpf9aL9epCfFqWDEKysUlLQ==}
     engines: {node: '>=0.6'}
-    dev: false
-
-  /querystringify/2.2.0:
-    resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==}
     dev: false
 
   /queue-microtask/1.2.3:
@@ -2406,10 +2394,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       rc: 1.2.8
-    dev: false
-
-  /requires-port/1.0.0:
-    resolution: {integrity: sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=}
     dev: false
 
   /resolve-from/5.0.0:
@@ -2859,13 +2843,6 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       prepend-http: 2.0.0
-    dev: false
-
-  /url-parse/1.5.4:
-    resolution: {integrity: sha512-ITeAByWWoqutFClc/lRZnFplgXgEZr3WJ6XngMM/N9DMIm4K8zXPCZ1Jdu0rERwO84w1WC5wkle2ubwTA4NTBg==}
-    dependencies:
-      querystringify: 2.2.0
-      requires-port: 1.0.0
     dev: false
 
   /util-deprecate/1.0.2:
