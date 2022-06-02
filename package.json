@@ -18,7 +18,7 @@
     "format": "prettier --write --end-of-line=auto \"./**/*.{js,ts,json}\" --ignore-path .gitignore"
   },
   "dependencies": {
-    "probot": "12.2.3"
+    "probot": "12.2.4"
   },
   "devDependencies": {
     "@octokit/rest": "18.12.0",
