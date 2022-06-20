@@ -1,5 +1,5 @@
-# tauri-apps-bot
-A bot for tauri-apps org to automate various tasks and intended to used only by tauri-apps org.
+# tauri-github-bot
+A GitHub bot for tauri-apps org to automate various tasks and intended to used only by tauri-apps org members.
 
 ## Commands:
 > Commands are comments on issues or pull requests, that start with a special syntax.

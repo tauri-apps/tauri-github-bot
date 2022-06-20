@@ -2,7 +2,7 @@ import { Octokit } from '@octokit/rest'
 import { Probot } from 'probot'
 import {
   COMMAND_REGEX,
-  TAURI_APPS_BOT,
+  TAURI_GITHUB_BOT,
   TAURI_BOT_ACC,
   TAURI_BOT_ACC_OCTOKIT,
   TAURI_ORG,
@@ -71,7 +71,7 @@ export default (app: Probot): void => {
         // an issue is closed in a tauri-apps repo
         repository.owner.login === TAURI_ORG &&
         // and was created by our bot
-        (issue.user.login === TAURI_APPS_BOT ||
+        (issue.user.login === TAURI_GITHUB_BOT ||
           // or was created by tauri-bot account
           issue.user.login === TAURI_BOT_ACC) &&
         // and it was from an upstream command

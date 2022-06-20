@@ -8,21 +8,15 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16]
     steps:
       - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7
       - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Cache .pnpm-store
-        uses: actions/cache@v2
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-      - name: Install pnpm
-        run: curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@6
+          node-version: 16
+          cache: 'pnpm'
       - run: pnpm i
       - run: pnpm build
       - run: pnpm type-check
@@ -32,4 +26,4 @@ jobs:
           key: ${{ secrets.DIGITAL_OCEAN_SSH_KEY }}
           known_hosts: ${{ secrets.DIGITAL_OCEAN_SSH_KNOWN_HOSTS }}
       - name: Deploy to DigitalOcean
-        run: ssh ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }} "cd ~/tauri-apps-bot && git pull && rm .env; echo 'APP_ID=${{ secrets.APP_ID }}' >> .env && echo 'WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}' >> .env && echo 'TAURI_BOT_ACC_TOKEN=${{ secrets.TAURI_BOT_ACC_TOKEN }}' >> .env && echo 'PORT=9000' >> .env && echo '${{ secrets.PRIVATE_KEY }}' >> tauri-apps.2021-12-31.private-key.pem && ls -lah && pnpm i && pnpm build && pm2 delete 'tauri-apps-github-bot' ; pm2 start node --time --name 'tauri-apps-github-bot' -- ./node_modules/probot/bin/probot.js run ./dist/index.js"
+        run: ssh ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }} "cd ~/tauri-github-bot && git pull && rm .env; echo 'APP_ID=${{ secrets.APP_ID }}' >> .env && echo 'WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}' >> .env && echo 'TAURI_BOT_ACC_TOKEN=${{ secrets.TAURI_BOT_ACC_TOKEN }}' >> .env && echo 'PORT=9000' >> .env && echo '${{ secrets.PRIVATE_KEY }}' > tauri-github-bot.private-key.pem && ls -lah && pnpm i && pnpm build && pm2 delete 'tauri-github-bot' ; pm2 start node --time --name 'tauri-github-bot' -- ./node_modules/probot/bin/probot.js run ./dist/index.js"

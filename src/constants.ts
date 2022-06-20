@@ -1,7 +1,6 @@
 import { Octokit } from '@octokit/rest'
 
-/** the Github App (bot) name  */
-export const TAURI_APPS_BOT = 'tauri-apps[bot]'
+export const TAURI_GITHUB_BOT = 'tauri-apps[bot]'
 /** https://github.com/tauri-bot account */
 export const TAURI_BOT_ACC = 'tauri-bot'
 export const TAURI_BOT_ACC_TOKEN = process.env.TAURI_BOT_ACC_TOKEN
