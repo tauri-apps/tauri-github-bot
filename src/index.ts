@@ -92,7 +92,7 @@ export default (app: Probot): void => {
         if (state === 'closed') return
 
         app.log.info(
-          `Upstream issue ${repository.owner.login}/${repository.name}#${issue.number} has been closed; notifying original issue ${owner}/${repo}#${issue_number}} .`
+          `Upstream issue ${repository.owner.login}/${repository.name}#${issue.number} has been closed; notifying original issue ${owner}/${repo}#${issue_number} .`
         )
 
         // notify original issue that upstream is resolved
