@@ -7,7 +7,7 @@ export async function getIssueFromUrl(
 ): Promise<
   RestEndpointMethodTypes['issues']['get']['response']['data'] | undefined
 > {
-  const matches = /\.github\.com\/(.+?)\/(.+?)\/issues\/([0-9]+)$/.exec(url)
+  const matches = /\.*github\.com\/(.+?)\/(.+?)\/issues\/([0-9]+)$/.exec(url)
   if (!matches) return
 
   const [, owner, repo, issue_number] = matches
