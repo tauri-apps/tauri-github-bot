@@ -10,9 +10,9 @@ import {
   UPSTREAM_RESOLVED_LABEL,
 } from './constants'
 import {
-  getUpstreamIssueBody,
+  makeUpstreamIssueBody,
   UPSTREAM_ISSUE_BODY_PREDICATE,
-  getUpstreamIssueClosedComment,
+  makeUpstreamIssueClosedComment,
   UPSTREAM_ISSUE_BODY_SEPARATOR,
 } from './templates'
 import { getIssueFromUrl, isTauriOrgMemeber } from './util'
@@ -37,16 +37,15 @@ export default (app: Probot): void => {
           // only upstream from a user that is a memeber in tauri-apps org
           (await isTauriOrgMemeber(sender.login))
         ) {
-          app.log.info(
-            `Running \`/upstream\` command to ${cOwner}/${cRepo} from ${sender.login}.`
-          )
+          const { title, body, html_url, number } = context.payload.issue
 
-          // create upstream issue
-          const { title, body, html_url } = context.payload.issue
+          app.log.info(
+            `Running "/upstream" command from ${repository.owner.login}/${repository.name}#${number} to ${cOwner}/${cRepo} by ${sender.login}.`
+          )
 
           await TAURI_BOT_ACC_OCTOKIT.issues.create({
             title,
-            body: getUpstreamIssueBody(html_url, body ?? ''),
+            body: makeUpstreamIssueBody(html_url, body ?? ''),
             labels: context.payload.issue.labels,
             repo: cRepo,
             owner: cOwner,
@@ -87,30 +86,43 @@ export default (app: Probot): void => {
           originalIssueUrl
         )
 
-        if (!originalIssue?.repository || originalIssue?.state === "closed") return
+        if (!originalIssue?.repository || originalIssue?.state === 'closed')
+          return
+
+        const {
+          repository: {
+            name,
+            owner: { login },
+          },
+          number,
+        } = originalIssue
+
+        app.log.info(
+          `Upstream issue ${repository.owner.login}/${repository.name}#${issue.number} has been closed; notifying original issue ${login}/${name}#${number}} .`
+        )
 
         // notify original issue that upstream is resolved
         await context.octokit.issues.createComment({
-          body: getUpstreamIssueClosedComment(issue.html_url),
-          owner: originalIssue.repository.owner.name ?? TAURI_ORG,
-          repo: originalIssue.repository.name,
-          issue_number: originalIssue.number,
+          body: makeUpstreamIssueClosedComment(issue.html_url),
+          owner: login,
+          repo: name,
+          issue_number: number,
         })
 
         // add upstream resolved label
         await context.octokit.issues.addLabels({
           labels: [UPSTREAM_RESOLVED_LABEL],
-          owner: originalIssue.repository.owner.name ?? TAURI_ORG,
-          repo: originalIssue.repository.name,
-          issue_number: originalIssue.number,
+          owner: login,
+          repo: name,
+          issue_number: number,
         })
 
         // remove upstream label
         await context.octokit.issues.removeLabel({
           name: UPSTREAM_LABEL,
-          owner: originalIssue.repository.owner.name ?? TAURI_ORG,
-          repo: originalIssue.repository.name,
-          issue_number: originalIssue.number,
+          owner: login,
+          repo: name,
+          issue_number: number,
         })
       }
     })
