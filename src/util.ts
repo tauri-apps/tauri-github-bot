@@ -1,11 +1,17 @@
-import { Octokit, RestEndpointMethodTypes } from '@octokit/rest'
+import { Octokit } from '@octokit/rest'
 import { TAURI_BOT_ACC_OCTOKIT, TAURI_ORG } from './constants'
 
-export async function getIssueFromUrl(
+export async function getIssueInfoFromUrl(
   octokit: Octokit,
   url: string
 ): Promise<
-  RestEndpointMethodTypes['issues']['get']['response']['data'] | undefined
+  | [
+    string,
+    string,
+    number,
+    string
+  ]
+  | undefined
 > {
   const matches = /\.*github\.com\/(.+?)\/(.+?)\/issues\/([0-9]+)$/.exec(url)
   if (!matches) return
@@ -14,9 +20,13 @@ export async function getIssueFromUrl(
 
   if (!+issue_number) return
 
-  return (
-    await octokit.issues.get({ issue_number: +issue_number, owner, repo })
-  ).data
+  return [
+    owner,
+    repo,
+    +issue_number,
+    (await octokit.issues.get({ issue_number: +issue_number, owner, repo }))
+      .data.state,
+  ]
 }
 
 export async function isTauriOrgMemeber(user: string): Promise<boolean> {

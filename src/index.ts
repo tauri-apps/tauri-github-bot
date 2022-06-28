@@ -15,7 +15,10 @@ import {
   makeUpstreamIssueClosedComment,
   UPSTREAM_ISSUE_BODY_SEPARATOR,
 } from './templates'
-import { getIssueFromUrl, isTauriOrgMemeber } from './util'
+import {
+  getIssueInfoFromUrl,
+  isTauriOrgMemeber,
+} from './util'
 
 export default (app: Probot): void => {
   try {
@@ -81,48 +84,39 @@ export default (app: Probot): void => {
           .split(UPSTREAM_ISSUE_BODY_SEPARATOR)[0]
           .trim()
 
-        const originalIssue = await getIssueFromUrl(
-          context.octokit,
-          originalIssueUrl
-        )
+        let info = await getIssueInfoFromUrl(context.octokit, originalIssueUrl)
+        if (!info) return
 
-        if (!originalIssue?.repository || originalIssue?.state === 'closed')
-          return
+        const [owner, repo, issue_number, state] = info
 
-        const {
-          repository: {
-            name,
-            owner: { login },
-          },
-          number,
-        } = originalIssue
+        if (state === 'closed') return
 
         app.log.info(
-          `Upstream issue ${repository.owner.login}/${repository.name}#${issue.number} has been closed; notifying original issue ${login}/${name}#${number}} .`
+          `Upstream issue ${repository.owner.login}/${repository.name}#${issue.number} has been closed; notifying original issue ${owner}/${repo}#${issue_number}} .`
         )
 
         // notify original issue that upstream is resolved
         await context.octokit.issues.createComment({
           body: makeUpstreamIssueClosedComment(issue.html_url),
-          owner: login,
-          repo: name,
-          issue_number: number,
+          owner,
+          repo,
+          issue_number,
         })
 
         // add upstream resolved label
         await context.octokit.issues.addLabels({
           labels: [UPSTREAM_RESOLVED_LABEL],
-          owner: login,
-          repo: name,
-          issue_number: number,
+          owner,
+          repo,
+          issue_number,
         })
 
         // remove upstream label
         await context.octokit.issues.removeLabel({
           name: UPSTREAM_LABEL,
-          owner: login,
-          repo: name,
-          issue_number: number,
+          owner,
+          repo,
+          issue_number,
         })
       }
     })
