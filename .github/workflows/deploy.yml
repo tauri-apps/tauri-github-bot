@@ -18,8 +18,9 @@ jobs:
           node-version: 16
           cache: 'pnpm'
       - run: pnpm i
-      - run: pnpm build
       - run: pnpm type-check
+      - run: pnpm build
+      - run: pnpm test
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
