@@ -7,7 +7,7 @@ import {
   TAURI_BOT_ACC_OCTOKIT,
   TAURI_ORG,
   UPSTREAM_LABEL,
-  UPSTREAM_RESOLVED_LABEL,
+  BACKLOG_LABEL,
 } from './constants'
 import {
   makeUpstreamIssueBody,
@@ -105,7 +105,7 @@ export default (app: Probot): void => {
 
         // add upstream resolved label
         await context.octokit.issues.addLabels({
-          labels: [UPSTREAM_RESOLVED_LABEL],
+          labels: [BACKLOG_LABEL],
           owner,
           repo,
           issue_number,
