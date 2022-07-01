@@ -12,8 +12,7 @@ it("Parses issue info correctly from a GitHub url", async () => {
     }
   };
   let correctUrl = "https://github.com/tauri-apps/tauri/issues/165"
-  //@ts-expect-error
-  const [owner, repo, issue_number, state] = await getIssueInfoFromUrl(dummyOctokit as Octokit, correctUrl);
+  const [owner, repo, issue_number, state] = (await getIssueInfoFromUrl(dummyOctokit as Octokit, correctUrl))!;
 
   expect(owner).toBe("tauri-apps")
   expect(repo).toBe("tauri")
