@@ -1,4 +1,3 @@
-import { Octokit } from '@octokit/rest'
 import { Probot } from 'probot'
 import {
   COMMAND_REGEX,

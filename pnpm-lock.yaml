@@ -134,15 +134,15 @@ packages:
       - encoding
     dev: false
 
-  /@octokit/core/4.0.2:
-    resolution: {integrity: sha512-vgVtE02EF9kXFsjmFoKFCwH1wDspPfDgopRbAlavkGuBJPWF+u5n0xgwP4obmdKNvLM+bB7MI7W31c2E13zgDQ==}
+  /@octokit/core/4.0.4:
+    resolution: {integrity: sha512-sUpR/hc4Gc7K34o60bWC7WUH6Q7T6ftZ2dUmepSyJr9PRF76/qqkWjE2SOEzCqLA5W83SaISymwKtxks+96hPQ==}
     engines: {node: '>= 14'}
     dependencies:
       '@octokit/auth-token': 3.0.0
-      '@octokit/graphql': 4.8.0
-      '@octokit/request': 6.0.1
-      '@octokit/request-error': 2.1.0
-      '@octokit/types': 6.34.0
+      '@octokit/graphql': 5.0.0
+      '@octokit/request': 6.0.2
+      '@octokit/request-error': 3.0.0
+      '@octokit/types': 6.39.0
       before-after-hook: 2.2.2
       universal-user-agent: 6.0.0
     transitivePeerDependencies:
@@ -155,6 +155,7 @@ packages:
       '@octokit/types': 6.39.0
       is-plain-object: 5.0.0
       universal-user-agent: 6.0.0
+    dev: false
 
   /@octokit/endpoint/7.0.0:
     resolution: {integrity: sha512-Kz/mIkOTjs9rV50hf/JK9pIDl4aGwAtT8pry6Rpy+hVXkAPhXanNQRxMoq6AeRgDCZR6t/A1zKniY2V1YhrzlQ==}
@@ -173,6 +174,18 @@ packages:
       universal-user-agent: 6.0.0
     transitivePeerDependencies:
       - encoding
+    dev: false
+
+  /@octokit/graphql/5.0.0:
+    resolution: {integrity: sha512-1ZZ8tX4lUEcLPvHagfIVu5S2xpHYXAmgN0+95eAOPoaVPzCfUXJtA5vASafcpWcO86ze0Pzn30TAx72aB2aguQ==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/request': 6.0.2
+      '@octokit/types': 6.39.0
+      universal-user-agent: 6.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: true
 
   /@octokit/oauth-authorization-url/4.3.3:
     resolution: {integrity: sha512-lhP/t0i8EwTmayHG4dqLXgU+uPVys4WD/qUNvC+HfB1S1dyqULm5Yx9uKc1x79aP66U1Cb4OZeW8QU/RA9A4XA==}
@@ -192,6 +205,7 @@ packages:
 
   /@octokit/openapi-types/11.2.0:
     resolution: {integrity: sha512-PBsVO+15KSlGmiI8QAzaqvsNlZlrDlyAJYcrXBCvVUxCp7VnXjkwPoFHgjEJXx3WF9BAwkA6nfCUA7i9sODzKA==}
+    dev: false
 
   /@octokit/openapi-types/12.8.0:
     resolution: {integrity: sha512-ydcKLs2KKcxlhpdWLzJxEBDEk/U5MUeqtqkXlrtAUXXFPs6vLl1PEGghFC/BbpleosB7iXs0Z4P2DGe7ZT5ZNg==}
@@ -212,22 +226,22 @@ packages:
       '@octokit/types': 6.39.0
     dev: false
 
-  /@octokit/plugin-paginate-rest/3.0.0_@octokit+core@4.0.2:
+  /@octokit/plugin-paginate-rest/3.0.0_@octokit+core@4.0.4:
     resolution: {integrity: sha512-fvw0Q5IXnn60D32sKeLIxgXCEZ7BTSAjJd8cFAE6QU5qUp0xo7LjFUjjX1J5D7HgN355CN4EXE4+Q1/96JaNUA==}
     engines: {node: '>= 14'}
     peerDependencies:
       '@octokit/core': '>=4'
     dependencies:
-      '@octokit/core': 4.0.2
+      '@octokit/core': 4.0.4
       '@octokit/types': 6.39.0
     dev: true
 
-  /@octokit/plugin-request-log/1.0.4_@octokit+core@4.0.2:
+  /@octokit/plugin-request-log/1.0.4_@octokit+core@4.0.4:
     resolution: {integrity: sha512-mLUsMkgP7K/cnFEw07kWqXGF5LKrOkD+lhCrKvPHXWDywAwuDUeDwWBpc69XK3pNX0uKiVt8g5z96PJ6z9xCFA==}
     peerDependencies:
       '@octokit/core': '>=3'
     dependencies:
-      '@octokit/core': 4.0.2
+      '@octokit/core': 4.0.4
     dev: true
 
   /@octokit/plugin-rest-endpoint-methods/5.13.0_@octokit+core@3.5.1:
@@ -240,13 +254,13 @@ packages:
       deprecation: 2.3.1
     dev: false
 
-  /@octokit/plugin-rest-endpoint-methods/6.0.0_@octokit+core@4.0.2:
+  /@octokit/plugin-rest-endpoint-methods/6.0.0_@octokit+core@4.0.4:
     resolution: {integrity: sha512-9LkEvZB3WDuayEI381O5A/eM3QQioBZrwymQp5CUCNz9UMP/yZAIqBjcPhVJJFA3IRkKO1EARo98OePt9i0rkQ==}
     engines: {node: '>= 14'}
     peerDependencies:
       '@octokit/core': '>=3'
     dependencies:
-      '@octokit/core': 4.0.2
+      '@octokit/core': 4.0.4
       '@octokit/types': 6.39.0
       deprecation: 2.3.1
     dev: true
@@ -274,6 +288,16 @@ packages:
       '@octokit/types': 6.39.0
       deprecation: 2.3.1
       once: 1.4.0
+    dev: false
+
+  /@octokit/request-error/3.0.0:
+    resolution: {integrity: sha512-WBtpzm9lR8z4IHIMtOqr6XwfkGvMOOILNLxsWvDwtzm/n7f5AWuqJTXQXdDtOvPfTDrH4TPhEvW2qMlR4JFA2w==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@octokit/types': 6.39.0
+      deprecation: 2.3.1
+      once: 1.4.0
+    dev: true
 
   /@octokit/request/5.6.3:
     resolution: {integrity: sha512-bFJl0I1KVc9jYTe9tdGGpAMPy32dLBXXo1dS/YwSCTL/2nd9XeHsY616RE3HPXDVk+a+dBuzyz5YdlXwcDTr2A==}
@@ -286,13 +310,14 @@ packages:
       universal-user-agent: 6.0.0
     transitivePeerDependencies:
       - encoding
+    dev: false
 
-  /@octokit/request/6.0.1:
-    resolution: {integrity: sha512-9DSQ7fKBeSMU5aD6JfWA/1XFwP44X32d9fSYdQzxSsROjOginPYtW4Xwwt3Qs7wZtBmFOWV/td3gxOHmz9hfig==}
+  /@octokit/request/6.0.2:
+    resolution: {integrity: sha512-WPMcm8nUET2v6P5AbTIhNzEorMLFPbFnzfP/VMAaRFwNzaqHmVvS+YLvqtWyKq0vnZ6a9ImQuCHNb3L4oNovRw==}
     engines: {node: '>= 14'}
     dependencies:
       '@octokit/endpoint': 7.0.0
-      '@octokit/request-error': 2.1.0
+      '@octokit/request-error': 3.0.0
       '@octokit/types': 6.39.0
       is-plain-object: 5.0.0
       node-fetch: 2.6.7
@@ -305,10 +330,10 @@ packages:
     resolution: {integrity: sha512-5arkTsnnRT7/sbI4fqgSJ35KiFaN7zQm0uQiQtivNQLI8RQx8EHwJCajcTUwmaCMNDg7tdCvqAnc7uvHHPxrtQ==}
     engines: {node: '>= 14'}
     dependencies:
-      '@octokit/core': 4.0.2
-      '@octokit/plugin-paginate-rest': 3.0.0_@octokit+core@4.0.2
-      '@octokit/plugin-request-log': 1.0.4_@octokit+core@4.0.2
-      '@octokit/plugin-rest-endpoint-methods': 6.0.0_@octokit+core@4.0.2
+      '@octokit/core': 4.0.4
+      '@octokit/plugin-paginate-rest': 3.0.0_@octokit+core@4.0.4
+      '@octokit/plugin-request-log': 1.0.4_@octokit+core@4.0.4
+      '@octokit/plugin-rest-endpoint-methods': 6.0.0_@octokit+core@4.0.4
     transitivePeerDependencies:
       - encoding
     dev: true
@@ -317,6 +342,7 @@ packages:
     resolution: {integrity: sha512-s1zLBjWhdEI2zwaoSgyOFoKSl109CUcVBCc7biPJ3aAf6LGLU6szDvi31JPU7bxfla2lqfhjbbg/5DdFNxOwHw==}
     dependencies:
       '@octokit/openapi-types': 11.2.0
+    dev: false
 
   /@octokit/types/6.39.0:
     resolution: {integrity: sha512-Mq4N9sOAYCitTsBtDdRVrBE80lIrMBhL9Jbrw0d+j96BAzlq4V+GLHFJbHokEsVvO/9tQupQdoFdgVYhD2C8UQ==}

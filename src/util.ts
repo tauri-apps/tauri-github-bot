@@ -1,8 +1,8 @@
-import { Octokit } from '@octokit/rest'
+import { ProbotOctokit } from 'probot'
 import { TAURI_BOT_ACC_OCTOKIT, TAURI_ORG } from './constants'
 
 export async function getIssueInfoFromUrl(
-  octokit: Octokit,
+  octokit: InstanceType<typeof ProbotOctokit>,
   url: string
 ): Promise<
   | [
