@@ -14,10 +14,7 @@ import {
   makeUpstreamIssueClosedComment,
   UPSTREAM_ISSUE_BODY_SEPARATOR,
 } from './templates'
-import {
-  getIssueInfoFromUrl,
-  isTauriOrgMemeber,
-} from './util'
+import { getIssueInfoFromUrl, isTauriOrgMemeber } from './util'
 
 export default (app: Probot): void => {
   try {
