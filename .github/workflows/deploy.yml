@@ -21,10 +21,22 @@ jobs:
       - run: pnpm type-check
       - run: pnpm build
       - run: pnpm test
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
+      - name: Deploy to DigitalOcean droplet
+        uses: appleboy/ssh-action@master
         with:
-          key: ${{ secrets.DIGITAL_OCEAN_SSH_KEY }}
-          known_hosts: ${{ secrets.DIGITAL_OCEAN_SSH_KNOWN_HOSTS }}
-      - name: Deploy to DigitalOcean
-        run: ssh ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }} "cd ~/tauri-github-bot && git pull && rm .env; echo 'APP_ID=${{ secrets.APP_ID }}' >> .env && echo 'WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}' >> .env && echo 'TAURI_BOT_ACC_TOKEN=${{ secrets.TAURI_BOT_ACC_TOKEN }}' >> .env && echo 'PORT=9000' >> .env && echo '${{ secrets.PRIVATE_KEY }}' > tauri-github-bot.private-key.pem && ls -lah && pnpm i && pnpm build && pm2 delete 'tauri-github-bot' ; pm2 start node --time --name 'tauri-github-bot' -- ./node_modules/probot/bin/probot.js run ./dist/index.js"
+          host: ${{ secrets.DO_SSH_HOST }}
+          username: ${{ secrets.DO_SSH_USERNAME }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          script: |
+            cd /home/nodejs/tauri-github-bot
+            git pull
+            rm .env;
+            echo 'APP_ID=${{ secrets.APP_ID }}' >> .env
+            echo 'WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}' >> .env
+            echo 'TAURI_BOT_ACC_TOKEN=${{ secrets.TAURI_BOT_ACC_TOKEN }}' >> .env
+            echo 'PORT=9000' >> .env
+            echo '${{ secrets.PRIVATE_KEY }}' > tauri-github-bot.private-key.pem
+            ls -lah
+            pnpm i
+            pnpm build
+            sudo -u nodejs pm2 restart 'tauri-github-bot'
