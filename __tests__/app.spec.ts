@@ -1,3 +1,7 @@
+// Copyright 2019-2022 Tauri Programme within The Commons Conservancy
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: MIT
+
 import nock from "nock";
 import app from "../src";
 import { Probot, ProbotOctokit } from "probot";
