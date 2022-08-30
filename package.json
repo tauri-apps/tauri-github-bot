@@ -19,7 +19,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "probot": "12.2.5"
+    "probot": "12.2.7"
   },
   "devDependencies": {
     "@octokit/rest": "19.0.4",
