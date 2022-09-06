@@ -4,13 +4,13 @@ specifiers:
   '@octokit/rest': 19.0.4
   nock: 13.2.9
   prettier: 2.7.1
-  probot: 12.2.7
+  probot: 12.2.8
   tsup: 6.2.3
   typescript: 4.8.2
   vitest: 0.23.1
 
 dependencies:
-  probot: 12.2.7
+  probot: 12.2.8
 
 devDependencies:
   '@octokit/rest': 19.0.4
@@ -2287,8 +2287,8 @@ packages:
     hasBin: true
     dev: true
 
-  /probot/12.2.7:
-    resolution: {integrity: sha512-T39QMxlukg3YHs7p39HDg0+2EOIozzod64tBYSqz7biZhyhOB/vAytH/5wrF0WzqRjpd3kOWRTTKF0tvobRhjw==}
+  /probot/12.2.8:
+    resolution: {integrity: sha512-O2WqJmgXUijAOTHaIBEW3jC5OU9Rq+eUg/AEBI5zkAUZaxzJMQvXvGvhVsdFE3Zt9Z3ceGN8Z2cgN+NTItSrCQ==}
     engines: {node: '>=10.21'}
     hasBin: true
     dependencies:
