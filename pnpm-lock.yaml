@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@octokit/rest': 19.0.5
   nock: 13.2.9
-  prettier: 2.8.1
+  prettier: 2.8.2
   probot: 12.2.8
   tsup: 6.5.0
   typescript: 4.9.4
@@ -15,7 +15,7 @@ dependencies:
 devDependencies:
   '@octokit/rest': 19.0.5
   nock: 13.2.9
-  prettier: 2.8.1
+  prettier: 2.8.2
   tsup: 6.5.0_typescript@4.9.4
   typescript: 4.9.4
   vitest: 0.26.3
@@ -2121,8 +2121,8 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /prettier/2.8.1:
-    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
+  /prettier/2.8.2:
+    resolution: {integrity: sha512-BtRV9BcncDyI2tsuS19zzhzoxD8Dh8LiCx7j7tHzrkz8GFXAexeWFdi22mjE1d16dftH2qNaytVxqiRTGlMfpw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
