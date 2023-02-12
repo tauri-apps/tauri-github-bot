@@ -5,7 +5,7 @@ specifiers:
   nock: 13.3.0
   prettier: 2.8.4
   probot: 12.3.0
-  tsup: 6.6.0
+  tsup: 6.6.2
   typescript: 4.9.5
   vitest: 0.28.4
 
@@ -16,7 +16,7 @@ devDependencies:
   '@octokit/rest': 19.0.7
   nock: 13.3.0
   prettier: 2.8.4
-  tsup: 6.6.0_typescript@4.9.5
+  tsup: 6.6.2_typescript@4.9.5
   typescript: 4.9.5
   vitest: 0.28.4
 
@@ -2914,8 +2914,8 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: false
 
-  /tsup/6.6.0_typescript@4.9.5:
-    resolution: {integrity: sha512-HxZE7Hj5yNxLFftCXdcJ+Jsax8dI4oKb0bt8fIvd1g/W0FZ46sU1pFBVo15WpOERFcEMH7Hykey/Q+hKO4s9RQ==}
+  /tsup/6.6.2_typescript@4.9.5:
+    resolution: {integrity: sha512-+yQ6SI4rVtp1+YpcYOePumJLEVQ896CDNRt9dJ2L/DeMnLf1+FTOCVw5eioLBH0xLdHgogO9NQ6vPNF5MfkSJw==}
     engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
