@@ -25,7 +25,7 @@
     "@octokit/rest": "19.0.7",
     "nock": "13.3.0",
     "prettier": "2.8.4",
-    "tsup": "6.6.3",
+    "tsup": "6.7.0",
     "typescript": "5.0.2",
     "vitest": "0.29.3"
   },
