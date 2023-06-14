@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   probot:
-    specifier: 12.3.0
-    version: 12.3.0
+    specifier: 12.3.1
+    version: 12.3.1
 
 devDependencies:
   '@octokit/rest':
@@ -2354,8 +2354,8 @@ packages:
       react-is: 17.0.2
     dev: true
 
-  /probot@12.3.0:
-    resolution: {integrity: sha512-I7qpD6myIt5eEqAOv14mrbdh4HdLG1MQgCHGQJpIj6rdDeQaacQDL2THlMSqIU2VBcdIRpLqNv7D0z2NG0la3w==}
+  /probot@12.3.1:
+    resolution: {integrity: sha512-ECSgycmAC0ILEK6cOa+x3QPufP5JybsuohOFCYr3glQU5SkbmypZJE/Sfio9mxAFHK5LCXveIDsfZCxf6ck4JA==}
     engines: {node: '>=10.21'}
     hasBin: true
     dependencies:
