@@ -7,7 +7,7 @@ export const UPSTREAM_ISSUE_BODY_PREDICATE =
 export const UPSTREAM_ISSUE_BODY_SEPARATOR = "\n\n";
 export function makeUpstreamIssueBody(
   originalIssueUrl: string,
-  body: string
+  body: string,
 ): string {
   return `${UPSTREAM_ISSUE_BODY_PREDICATE} ${originalIssueUrl} ${UPSTREAM_ISSUE_BODY_SEPARATOR}${body}`;
 }

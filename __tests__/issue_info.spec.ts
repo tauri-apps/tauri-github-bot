@@ -19,7 +19,7 @@ describe("Parses issue info correctly from a GitHub url", () => {
     let url = "https://github.com/tauri-apps/tauri/issues/165";
     const [owner, repo, issue_number, state] = (await getIssueInfoFromUrl(
       dummyOctokit,
-      url
+      url,
     ))!;
     expect(owner).toBe("tauri-apps");
     expect(repo).toBe("tauri");
