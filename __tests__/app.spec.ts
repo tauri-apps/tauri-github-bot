@@ -59,8 +59,8 @@ describe("Tauri Github bot", () => {
         expect(body.body).toMatch(
           makeUpstreamIssueBody(
             upstreamSuccess.issue.html_url,
-            upstreamSuccess.issue.body
-          )
+            upstreamSuccess.issue.body,
+          ),
         );
         return true;
       })
@@ -72,7 +72,7 @@ describe("Tauri Github bot", () => {
         (body) => {
           expect(body.labels).toMatchObject([UPSTREAM_LABEL]);
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -110,7 +110,7 @@ describe("Tauri Github bot", () => {
     nock("https://api.github.com")
       .post(`/repos/tauri-apps/tauri/issues/90/comments`, (body) => {
         expect(body.body).toMatch(
-          makeUpstreamIssueClosedComment(issueClosedUpstreamed.issue.html_url)
+          makeUpstreamIssueClosedComment(issueClosedUpstreamed.issue.html_url),
         );
         return true;
       })
@@ -127,8 +127,8 @@ describe("Tauri Github bot", () => {
       .delete(
         `/repos/tauri-apps/tauri/issues/90/labels/${UPSTREAM_LABEL.replace(
           ":",
-          "%3A"
-        ).replace(" ", "%20")}`
+          "%3A",
+        ).replace(" ", "%20")}`,
       )
       .reply(200);
 

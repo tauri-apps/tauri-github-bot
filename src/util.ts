@@ -7,7 +7,7 @@ import { TAURI_BOT_ACC_OCTOKIT, TAURI_ORG } from "./constants";
 
 export async function getIssueInfoFromUrl(
   octokit: InstanceType<typeof ProbotOctokit>,
-  url: string
+  url: string,
 ): Promise<[string, string, number, string] | undefined> {
   const matches = /\.*github\.com\/(.+?)\/(.+?)\/issues\/([0-9]+)$/.exec(url);
   if (!matches) return;

@@ -43,7 +43,7 @@ export default (app: Probot): void => {
           const { title, body, html_url, number } = context.payload.issue;
 
           app.log.info(
-            `Running "/upstream" command from ${repository.owner.login}/${repository.name}#${number} to ${cOwner}/${cRepo} by ${sender.login}.`
+            `Running "/upstream" command from ${repository.owner.login}/${repository.name}#${number} to ${cOwner}/${cRepo} by ${sender.login}.`,
           );
 
           await TAURI_BOT_ACC_OCTOKIT.issues.create({
@@ -60,7 +60,7 @@ export default (app: Probot): void => {
               labels: [UPSTREAM_LABEL],
               repo: repository.name,
               owner: cOwner,
-            })
+            }),
           );
         }
       }
@@ -93,7 +93,7 @@ export default (app: Probot): void => {
         if (state === "closed") return;
 
         app.log.info(
-          `Upstream issue ${repository.owner.login}/${repository.name}#${issue.number} has been closed; notifying original issue ${owner}/${repo}#${issue_number} .`
+          `Upstream issue ${repository.owner.login}/${repository.name}#${issue.number} has been closed; notifying original issue ${owner}/${repo}#${issue_number} .`,
         );
 
         // notify original issue that upstream is resolved
