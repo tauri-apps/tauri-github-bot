@@ -27,7 +27,7 @@
     "prettier": "3.0.3",
     "tsup": "7.2.0",
     "typescript": "5.2.2",
-    "vitest": "0.34.3"
+    "vitest": "0.34.4"
   },
   "engines": {
     "node": ">=18.0.0"
