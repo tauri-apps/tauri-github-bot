@@ -14,8 +14,8 @@ devDependencies:
     specifier: 20.0.2
     version: 20.0.2
   nock:
-    specifier: 13.3.7
-    version: 13.3.7
+    specifier: 13.3.8
+    version: 13.3.8
   prettier:
     specifier: 3.0.3
     version: 3.0.3
@@ -2273,8 +2273,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: false
 
-  /nock@13.3.7:
-    resolution: {integrity: sha512-z3voRxo6G0JxqCsjuzERh1ReFC4Vp2b7JpSgcMJB6jnJbUszf88awAeQLIID2UNMwbMh9/Zm5sFscagj0QYHEg==}
+  /nock@13.3.8:
+    resolution: {integrity: sha512-96yVFal0c/W1lG7mmfRe7eO+hovrhJYd2obzzOZ90f6fjpeU/XNvd9cYHZKZAQJumDfhXgoTpkpJ9pvMj+hqHw==}
     engines: {node: '>= 10.13'}
     dependencies:
       debug: 4.3.4
