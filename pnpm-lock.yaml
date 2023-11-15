@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   probot:
-    specifier: 12.3.2
-    version: 12.3.2
+    specifier: 12.3.3
+    version: 12.3.3
 
 devDependencies:
   '@octokit/rest':
@@ -837,8 +837,8 @@ packages:
     resolution: {integrity: sha512-8adktjIb76A7viIdayQSFuBEwOzwhDC+9yxZpKNHjfzrlostHCw0/N7JWpWMObfElwvJMk2fY2l1noENCk9wmw==}
     dev: false
 
-  /@octokit/webhooks@9.26.0:
-    resolution: {integrity: sha512-foZlsgrTDwAmD5j2Czn6ji10lbWjGDVsUxTIydjG9KTkAWKJrFapXJgO5SbGxRwfPd3OJdhK3nA2YPqVhxLXqA==}
+  /@octokit/webhooks@9.26.3:
+    resolution: {integrity: sha512-DLGk+gzeVq5oK89Bo601txYmyrelMQ7Fi5EnjHE0Xs8CWicy2xkmnJMKptKJrBJpstqbd/9oeDFi/Zj2pudBDQ==}
     dependencies:
       '@octokit/request-error': 2.1.0
       '@octokit/webhooks-methods': 2.0.0
@@ -2586,8 +2586,8 @@ packages:
       react-is: 18.2.0
     dev: true
 
-  /probot@12.3.2:
-    resolution: {integrity: sha512-1c/nKcS7CMV0uVV1y1ODAhifcgY0FWwehpG0PTgKv/CJuowr71UCesf5TPpQmjSRPh2Zpj3MBdS2Opoc4vobjg==}
+  /probot@12.3.3:
+    resolution: {integrity: sha512-cdtKd+xISzi8sw6++BYBXleRknCA6hqUMoHj/sJqQBrjbNxQLhfeFCq9O2d0Z4eShsy5YFRR3MWwDKJ9uAE0CA==}
     engines: {node: '>=10.21'}
     hasBin: true
     dependencies:
@@ -2598,7 +2598,7 @@ packages:
       '@octokit/plugin-retry': 3.0.9
       '@octokit/plugin-throttling': 3.7.0(@octokit/core@3.6.0)
       '@octokit/types': 8.2.1
-      '@octokit/webhooks': 9.26.0
+      '@octokit/webhooks': 9.26.3
       '@probot/get-private-key': 1.1.1
       '@probot/octokit-plugin-config': 1.1.6(@octokit/core@3.6.0)
       '@probot/pino': 2.3.5
