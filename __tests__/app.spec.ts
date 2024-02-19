@@ -48,7 +48,10 @@ describe("Tauri Github bot", () => {
   };
 
   it("issue comment, doesn't upstream an issue", async () => {
-    await probot.receive({ name: "issue_comment", payload: noUpstream });
+    await probot.receive({
+      name: "issue_comment",
+      payload: noUpstream,
+    });
   });
 
   it("issue comment, upstreams an issue", async () => {
