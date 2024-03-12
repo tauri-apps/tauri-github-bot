@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   probot:
-    specifier: 13.0.2
-    version: 13.0.2
+    specifier: 13.1.0
+    version: 13.1.0
 
 devDependencies:
   '@octokit/rest':
@@ -369,7 +369,7 @@ packages:
     resolution: {integrity: sha512-T5S3oZ1JOE58gom6MIcrgwZXzTaxRnxBso58xhozxHpOqSTgDS6YNeEUvZ/kRvXgPrRz/KHnZhtb7jUMRi9E6w==}
     engines: {node: '>= 18'}
     dependencies:
-      '@octokit/request': 8.0.4
+      '@octokit/request': 8.2.0
       '@octokit/types': 11.1.0
       universal-user-agent: 6.0.0
 
@@ -398,7 +398,6 @@ packages:
 
   /@octokit/openapi-types@19.1.0:
     resolution: {integrity: sha512-6G+ywGClliGQwRsjvqVYpklIfa7oRPA0vyhPQG/1Feh+B+wU0vGH1JiJ5T25d3g1JZYBHzR2qefLi9x8Gt+cpw==}
-    dev: false
 
   /@octokit/plugin-enterprise-compatibility@4.0.1:
     resolution: {integrity: sha512-d5cqeO0F/xZsTxOPOTYdw+0x8p+9GuTGGPj7oGj3y9vLluGnd7q97PTEzeJnOSERrhS4DguihQmrGu+7PhVP9Q==}
@@ -497,6 +496,7 @@ packages:
       '@octokit/types': 11.1.0
       is-plain-object: 5.0.0
       universal-user-agent: 6.0.0
+    dev: true
 
   /@octokit/request@8.2.0:
     resolution: {integrity: sha512-exPif6x5uwLqv1N1irkLG1zZNJkOtj8bZxuVHd71U5Ftuxf2wGNvAJyNBcPbPC+EBzwYEbBDdSFb8EPcjpYxPQ==}
@@ -506,7 +506,6 @@ packages:
       '@octokit/request-error': 5.0.0
       '@octokit/types': 12.5.0
       universal-user-agent: 6.0.0
-    dev: false
 
   /@octokit/rest@20.0.2:
     resolution: {integrity: sha512-Ux8NDgEraQ/DMAU1PlAohyfBBXDwhnX2j33Z1nJNziqAfHi70PuxkFYIcIt8aIAxtRE7KVuKp8lSR8pA0J5iOQ==}
@@ -533,7 +532,6 @@ packages:
     resolution: {integrity: sha512-YJEKcb0KkJlIUNU/zjnZwHEP8AoVh/OoIcP/1IyR4UHxExz7fzpe/a8IG4wBtQi7QDEqiomVLX88S6FpxxAJtg==}
     dependencies:
       '@octokit/openapi-types': 19.1.0
-    dev: false
 
   /@octokit/webhooks-methods@4.1.0:
     resolution: {integrity: sha512-zoQyKw8h9STNPqtm28UGOYFE7O6D4Il8VJwhAtMHFt2C4L0VQT1qGKLeefUOqHNs1mNRYSadVv7x0z8U2yyeWQ==}
@@ -1036,7 +1034,7 @@ packages:
   /call-bind@1.0.2:
     resolution: {integrity: sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==}
     dependencies:
-      function-bind: 1.1.1
+      function-bind: 1.1.2
       get-intrinsic: 1.2.0
     dev: false
 
@@ -1472,10 +1470,6 @@ packages:
     dev: true
     optional: true
 
-  /function-bind@1.1.1:
-    resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
-    dev: false
-
   /function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
     dev: false
@@ -1492,7 +1486,7 @@ packages:
   /get-intrinsic@1.2.0:
     resolution: {integrity: sha512-L049y6nFOuom5wGyRc3/gdTLO94dySVKRACj1RmJZBQXlbTMhtNIgkWkUHq+jYmZvKf14EW1EoJnnjbmoHij0Q==}
     dependencies:
-      function-bind: 1.1.1
+      function-bind: 1.1.2
       has: 1.0.3
       has-symbols: 1.0.3
     dev: false
@@ -1555,7 +1549,7 @@ packages:
     resolution: {integrity: sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==}
     engines: {node: '>= 0.4.0'}
     dependencies:
-      function-bind: 1.1.1
+      function-bind: 1.1.2
     dev: false
 
   /hasown@2.0.1:
@@ -2198,10 +2192,6 @@ packages:
       strip-json-comments: 3.1.1
     dev: false
 
-  /pino-std-serializers@6.1.0:
-    resolution: {integrity: sha512-KO0m2f1HkrPe9S0ldjx7za9BJjeHqBku5Ch8JyxETxT8dEFGz1PwgrHaOQupVYitpzbFSYm7nnljxD8dik2c+g==}
-    dev: false
-
   /pino-std-serializers@6.2.2:
     resolution: {integrity: sha512-cHjPPsE+vhj/tnhCy/wiMh3M3z3h/j15zHQX+S9GkTBgqJuTuJzYJ4gUyACLhDaJ7kk9ba9iRDmbH2tJU03OiA==}
     dev: false
@@ -2214,7 +2204,7 @@ packages:
       fast-redact: 3.1.2
       on-exit-leak-free: 2.1.0
       pino-abstract-transport: 1.1.0
-      pino-std-serializers: 6.1.0
+      pino-std-serializers: 6.2.2
       process-warning: 3.0.0
       quick-format-unescaped: 4.0.4
       real-require: 0.2.0
@@ -2284,8 +2274,8 @@ packages:
       react-is: 18.2.0
     dev: true
 
-  /probot@13.0.2:
-    resolution: {integrity: sha512-uBXW2EqAG47X/+/RiDURdK/Hc9j8wgmsqjP1aEvS495oFAlwiHxYkc+32btd4JTSU68OKVXdbQzzUwcoKy7Osg==}
+  /probot@13.1.0:
+    resolution: {integrity: sha512-RDoD7UoS726k1rL+14kzUNy9xx6TM7h5m7E9onC8nA6lJxP0lYsbvFPdNuQm4GjPabZlIQVW/s5cMh6UMwLCbA==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
