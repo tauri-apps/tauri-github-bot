@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   probot:
-    specifier: 13.1.0
-    version: 13.1.0
+    specifier: 13.1.1
+    version: 13.1.1
 
 devDependencies:
   '@octokit/rest':
@@ -2274,8 +2274,8 @@ packages:
       react-is: 18.2.0
     dev: true
 
-  /probot@13.1.0:
-    resolution: {integrity: sha512-RDoD7UoS726k1rL+14kzUNy9xx6TM7h5m7E9onC8nA6lJxP0lYsbvFPdNuQm4GjPabZlIQVW/s5cMh6UMwLCbA==}
+  /probot@13.1.1:
+    resolution: {integrity: sha512-rY/DJk+OXCon+T49wX69uCeRdITOFG8t2lHzT+lw6qpkis8NICJd3luZ6PJ6gbYcZwwPDBh/g/hjfbYaiN3Buw==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
@@ -2292,6 +2292,7 @@ packages:
       '@probot/octokit-plugin-config': 2.0.1(@octokit/core@5.1.0)
       '@probot/pino': 2.3.5
       '@types/express': 4.17.21
+      bottleneck: 2.19.5
       commander: 12.0.0
       deepmerge: 4.3.1
       dotenv: 16.4.4
