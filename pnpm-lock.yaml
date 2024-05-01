@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   probot:
-    specifier: 13.2.0
-    version: 13.2.0
+    specifier: 13.2.1
+    version: 13.2.1
 
 devDependencies:
   '@octokit/rest':
@@ -2217,8 +2217,8 @@ packages:
       react-is: 18.2.0
     dev: true
 
-  /probot@13.2.0:
-    resolution: {integrity: sha512-9fONmImU9aUmcbgEg/JtQwwEvM6IA6ds4ZRlshhjVB2fw5ijKXCH0M26H9kzVFeNZcmRDxK/MvCSc1CnHehxfA==}
+  /probot@13.2.1:
+    resolution: {integrity: sha512-gp2YJE8tJneZCgTxzWofhIjQ65T9ALJe750PpNbrPjXieF4/ux1ufoW3gnvDnqCk/lC0G1JPETzTW15x7Egf1g==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
