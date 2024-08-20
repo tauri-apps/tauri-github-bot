@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@octokit/rest": "21.0.2",
-    "nock": "13.5.4",
+    "nock": "13.5.5",
     "prettier": "3.3.3",
     "tsup": "8.2.4",
     "typescript": "5.5.4",
