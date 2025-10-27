@@ -14,8 +14,8 @@ devDependencies:
     specifier: 21.0.2
     version: 21.0.2
   nock:
-    specifier: 13.5.5
-    version: 13.5.5
+    specifier: 13.5.6
+    version: 13.5.6
   prettier:
     specifier: 3.3.3
     version: 3.3.3
@@ -2841,8 +2841,8 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /nock@13.5.5:
-    resolution: {integrity: sha512-XKYnqUrCwXC8DGG1xX4YH5yNIrlh9c065uaMZZHUoeUUINTOyt+x/G+ezYk0Ft6ExSREVIs+qBJDK503viTfFA==}
+  /nock@13.5.6:
+    resolution: {integrity: sha512-o2zOYiCpzRqSzPj0Zt/dQ/DqZeYoaQ7TUonc/xUPjCGl9WeHpNbxgVvOquXYAaJzI0M9BXV3HTzG0p8IUAbBTQ==}
     engines: {node: '>= 10.13'}
     dependencies:
       debug: 4.4.3
