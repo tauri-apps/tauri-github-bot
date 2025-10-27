@@ -24,7 +24,7 @@
   "devDependencies": {
     "@octokit/rest": "21.0.2",
     "nock": "13.5.6",
-    "prettier": "3.3.3",
+    "prettier": "3.6.2",
     "tsup": "8.3.0",
     "typescript": "5.9.3",
     "vitest": "4.0.4"
