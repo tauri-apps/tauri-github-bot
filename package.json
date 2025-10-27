@@ -22,7 +22,7 @@
     "probot": "13.4.7"
   },
   "devDependencies": {
-    "@octokit/rest": "21.0.2",
+    "@octokit/rest": "21.1.1",
     "nock": "13.5.6",
     "prettier": "3.6.2",
     "tsup": "8.3.0",
